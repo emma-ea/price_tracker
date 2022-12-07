@@ -39,7 +39,6 @@ class PriceTrackerCubit extends Cubit<PriceTrackerState> {
     results.fold(
       (l) => emit(PriceTrackerState.error(payload: state.payload.copyWith(error: l.message))), 
       (r) {
-        logger.i(r);
         emit(PriceTrackerState.loaded(payload: state.payload.copyWith(symbols: r)));
       },
     );
@@ -53,7 +52,6 @@ class PriceTrackerCubit extends Cubit<PriceTrackerState> {
     results.fold(
       (l) => emit(PriceTrackerState.error(payload: state.payload.copyWith(error: l.message))), 
       (r) {
-        logger.i(r);
         emit(PriceTrackerState.loaded(payload: state.payload.copyWith(ticks: r)));
       },
     );

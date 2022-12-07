@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:price_tracker/core/logging_utils.dart';
 import 'package:price_tracker/price_tracker/presentation/state/price_tracker_cubit.dart';
 
 class PriceTracker extends StatefulWidget {
@@ -11,6 +14,8 @@ class PriceTracker extends StatefulWidget {
 
 class _PriceTrackerState extends State<PriceTracker> {
 
+  String priceTracker = "";
+
   @override
   void initState() {
     super.initState();
@@ -21,29 +26,36 @@ class _PriceTrackerState extends State<PriceTracker> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PriceTrackerCubit, PriceTrackerState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        return SafeArea(
-          child: Scaffold(
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Center(child: Text("price tracker")),
-                const SizedBox(height: 40.0,),
-                TextButton(
-                  onPressed: () => context.read<PriceTrackerCubit>().disposeConnection(), 
-                  child: const Text("Reset connection")
-                )
-              ],
-            ),
-          ),
-        );
-      }
-    );
-  }
+      listener: (context, state) {
 
-  Widget dropDownBuilder(items) {
-    return Container();
+      },
+      builder: (context, state) =>
+        state.maybeWhen(
+          loading: (_) {
+            return const Center(child: CircularProgressIndicator(),);
+          },
+          loaded: (payload) {
+            logger.i(payload.symbols);
+            logger.i(payload.ticks);
+            return SafeArea(
+              child: Scaffold(
+                body: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Center(child: Text("Price Tracker"),),
+                    const SizedBox(height: 40,),
+                    TextButton(
+                      onPressed: () => context.read<PriceTrackerCubit>().disposeConnection(), 
+                      child: const Text("Reset connection"),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+          orElse: () => const SizedBox.shrink()
+        )
+    );
   }
 
 }
