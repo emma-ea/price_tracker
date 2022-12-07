@@ -13,7 +13,7 @@ class NetworkServiceImpl extends NetworkService {
     String endpoint, {
     Map<String, dynamic>? params
   }) {
-    final uri = Uri.parse(api(appId));
+    final uri = Uri.parse(api(priceTrackerAppId));
     final channel = IOWebSocketChannel.connect(uri);
     channel.sink.add(jsonEncode(params));
 
