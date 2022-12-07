@@ -8,9 +8,9 @@ abstract class SymbolTick with _$SymbolTick {
 
   const factory SymbolTick({
     @JsonKey(name: 'msg_type')
-    required String messageType,
+    required String? messageType,
     @JsonKey(name: 'tick')
-    required Ticks tick,
+    required Ticks? tick,
   }) = _SymbolTick;
 
   factory SymbolTick.fromJson(Map json) =>
@@ -20,14 +20,14 @@ abstract class SymbolTick with _$SymbolTick {
 
 @freezed
 abstract class Ticks with _$Ticks {
-  
+
   const factory Ticks({
     @JsonKey(name: 'ask')
-    required int ask,
+    required int? ask,
     @JsonKey(name: 'bid')
-    required int bid,
+    required int? bid,
     @JsonKey(name: 'quota')
-    required int quota
+    required int? quota
   }) = _Ticks;
 
   factory Ticks.fromJson(Map json) => 

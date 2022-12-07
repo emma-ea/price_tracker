@@ -21,9 +21,9 @@ MarketSymbol _$MarketSymbolFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MarketSymbol {
   @JsonKey(name: 'msg_type')
-  String get messageType => throw _privateConstructorUsedError;
+  String? get messageType => throw _privateConstructorUsedError;
   @JsonKey(name: 'active_symbols')
-  List<ActiveSymbol> get activeSymbols => throw _privateConstructorUsedError;
+  List<ActiveSymbol>? get activeSymbols => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,8 +38,8 @@ abstract class $MarketSymbolCopyWith<$Res> {
       _$MarketSymbolCopyWithImpl<$Res, MarketSymbol>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'msg_type') String messageType,
-      @JsonKey(name: 'active_symbols') List<ActiveSymbol> activeSymbols});
+      {@JsonKey(name: 'msg_type') String? messageType,
+      @JsonKey(name: 'active_symbols') List<ActiveSymbol>? activeSymbols});
 }
 
 /// @nodoc
@@ -55,18 +55,18 @@ class _$MarketSymbolCopyWithImpl<$Res, $Val extends MarketSymbol>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? messageType = null,
-    Object? activeSymbols = null,
+    Object? messageType = freezed,
+    Object? activeSymbols = freezed,
   }) {
     return _then(_value.copyWith(
-      messageType: null == messageType
+      messageType: freezed == messageType
           ? _value.messageType
           : messageType // ignore: cast_nullable_to_non_nullable
-              as String,
-      activeSymbols: null == activeSymbols
+              as String?,
+      activeSymbols: freezed == activeSymbols
           ? _value.activeSymbols
           : activeSymbols // ignore: cast_nullable_to_non_nullable
-              as List<ActiveSymbol>,
+              as List<ActiveSymbol>?,
     ) as $Val);
   }
 }
@@ -80,8 +80,8 @@ abstract class _$$_MarketSymbolCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'msg_type') String messageType,
-      @JsonKey(name: 'active_symbols') List<ActiveSymbol> activeSymbols});
+      {@JsonKey(name: 'msg_type') String? messageType,
+      @JsonKey(name: 'active_symbols') List<ActiveSymbol>? activeSymbols});
 }
 
 /// @nodoc
@@ -95,18 +95,18 @@ class __$$_MarketSymbolCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? messageType = null,
-    Object? activeSymbols = null,
+    Object? messageType = freezed,
+    Object? activeSymbols = freezed,
   }) {
     return _then(_$_MarketSymbol(
-      messageType: null == messageType
+      messageType: freezed == messageType
           ? _value.messageType
           : messageType // ignore: cast_nullable_to_non_nullable
-              as String,
-      activeSymbols: null == activeSymbols
+              as String?,
+      activeSymbols: freezed == activeSymbols
           ? _value._activeSymbols
           : activeSymbols // ignore: cast_nullable_to_non_nullable
-              as List<ActiveSymbol>,
+              as List<ActiveSymbol>?,
     ));
   }
 }
@@ -118,7 +118,7 @@ class _$_MarketSymbol implements _MarketSymbol {
       {@JsonKey(name: 'msg_type')
           required this.messageType,
       @JsonKey(name: 'active_symbols')
-          required final List<ActiveSymbol> activeSymbols})
+          required final List<ActiveSymbol>? activeSymbols})
       : _activeSymbols = activeSymbols;
 
   factory _$_MarketSymbol.fromJson(Map<String, dynamic> json) =>
@@ -126,14 +126,16 @@ class _$_MarketSymbol implements _MarketSymbol {
 
   @override
   @JsonKey(name: 'msg_type')
-  final String messageType;
-  final List<ActiveSymbol> _activeSymbols;
+  final String? messageType;
+  final List<ActiveSymbol>? _activeSymbols;
   @override
   @JsonKey(name: 'active_symbols')
-  List<ActiveSymbol> get activeSymbols {
+  List<ActiveSymbol>? get activeSymbols {
+    final value = _activeSymbols;
+    if (value == null) return null;
     if (_activeSymbols is EqualUnmodifiableListView) return _activeSymbols;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_activeSymbols);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -174,19 +176,19 @@ class _$_MarketSymbol implements _MarketSymbol {
 abstract class _MarketSymbol implements MarketSymbol {
   const factory _MarketSymbol(
       {@JsonKey(name: 'msg_type')
-          required final String messageType,
+          required final String? messageType,
       @JsonKey(name: 'active_symbols')
-          required final List<ActiveSymbol> activeSymbols}) = _$_MarketSymbol;
+          required final List<ActiveSymbol>? activeSymbols}) = _$_MarketSymbol;
 
   factory _MarketSymbol.fromJson(Map<String, dynamic> json) =
       _$_MarketSymbol.fromJson;
 
   @override
   @JsonKey(name: 'msg_type')
-  String get messageType;
+  String? get messageType;
   @override
   @JsonKey(name: 'active_symbols')
-  List<ActiveSymbol> get activeSymbols;
+  List<ActiveSymbol>? get activeSymbols;
   @override
   @JsonKey(ignore: true)
   _$$_MarketSymbolCopyWith<_$_MarketSymbol> get copyWith =>
@@ -200,9 +202,9 @@ ActiveSymbol _$ActiveSymbolFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ActiveSymbol {
   @JsonKey(name: 'display_name')
-  String get displayName => throw _privateConstructorUsedError;
+  String? get displayName => throw _privateConstructorUsedError;
   @JsonKey(name: 'symbol')
-  String get symbol => throw _privateConstructorUsedError;
+  String? get symbol => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -217,8 +219,8 @@ abstract class $ActiveSymbolCopyWith<$Res> {
       _$ActiveSymbolCopyWithImpl<$Res, ActiveSymbol>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'display_name') String displayName,
-      @JsonKey(name: 'symbol') String symbol});
+      {@JsonKey(name: 'display_name') String? displayName,
+      @JsonKey(name: 'symbol') String? symbol});
 }
 
 /// @nodoc
@@ -234,18 +236,18 @@ class _$ActiveSymbolCopyWithImpl<$Res, $Val extends ActiveSymbol>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? displayName = null,
-    Object? symbol = null,
+    Object? displayName = freezed,
+    Object? symbol = freezed,
   }) {
     return _then(_value.copyWith(
-      displayName: null == displayName
+      displayName: freezed == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
-              as String,
-      symbol: null == symbol
+              as String?,
+      symbol: freezed == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -259,8 +261,8 @@ abstract class _$$_ActiveSymbolCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'display_name') String displayName,
-      @JsonKey(name: 'symbol') String symbol});
+      {@JsonKey(name: 'display_name') String? displayName,
+      @JsonKey(name: 'symbol') String? symbol});
 }
 
 /// @nodoc
@@ -274,18 +276,18 @@ class __$$_ActiveSymbolCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? displayName = null,
-    Object? symbol = null,
+    Object? displayName = freezed,
+    Object? symbol = freezed,
   }) {
     return _then(_$_ActiveSymbol(
-      displayName: null == displayName
+      displayName: freezed == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
-              as String,
-      symbol: null == symbol
+              as String?,
+      symbol: freezed == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -302,10 +304,10 @@ class _$_ActiveSymbol implements _ActiveSymbol {
 
   @override
   @JsonKey(name: 'display_name')
-  final String displayName;
+  final String? displayName;
   @override
   @JsonKey(name: 'symbol')
-  final String symbol;
+  final String? symbol;
 
   @override
   String toString() {
@@ -342,18 +344,19 @@ class _$_ActiveSymbol implements _ActiveSymbol {
 
 abstract class _ActiveSymbol implements ActiveSymbol {
   const factory _ActiveSymbol(
-      {@JsonKey(name: 'display_name') required final String displayName,
-      @JsonKey(name: 'symbol') required final String symbol}) = _$_ActiveSymbol;
+          {@JsonKey(name: 'display_name') required final String? displayName,
+          @JsonKey(name: 'symbol') required final String? symbol}) =
+      _$_ActiveSymbol;
 
   factory _ActiveSymbol.fromJson(Map<String, dynamic> json) =
       _$_ActiveSymbol.fromJson;
 
   @override
   @JsonKey(name: 'display_name')
-  String get displayName;
+  String? get displayName;
   @override
   @JsonKey(name: 'symbol')
-  String get symbol;
+  String? get symbol;
   @override
   @JsonKey(ignore: true)
   _$$_ActiveSymbolCopyWith<_$_ActiveSymbol> get copyWith =>

@@ -5,12 +5,12 @@ part 'market_symbols.g.dart';
 
 @freezed
 abstract class MarketSymbol with _$MarketSymbol {
-  
+
   const factory MarketSymbol({
     @JsonKey(name: 'msg_type')
-    required String messageType,
+    required String? messageType,
     @JsonKey(name: 'active_symbols')
-    required List<ActiveSymbol> activeSymbols,
+    required List<ActiveSymbol>? activeSymbols,
   }) = _MarketSymbol;
   
   factory MarketSymbol.fromJson(Map json) => 
@@ -23,9 +23,9 @@ abstract class ActiveSymbol with _$ActiveSymbol {
 
   const factory ActiveSymbol({
     @JsonKey(name: 'display_name')
-    required String displayName,
+    required String? displayName,
     @JsonKey(name: 'symbol')
-    required String symbol,
+    required String? symbol,
   }) = _ActiveSymbol;
 
   factory ActiveSymbol.fromJson(Map json) => 

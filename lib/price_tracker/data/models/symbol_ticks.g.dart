@@ -8,8 +8,10 @@ part of 'symbol_ticks.dart';
 
 _$_SymbolTick _$$_SymbolTickFromJson(Map<String, dynamic> json) =>
     _$_SymbolTick(
-      messageType: json['msg_type'] as String,
-      tick: Ticks.fromJson(json['tick'] as Map<String, dynamic>),
+      messageType: json['msg_type'] as String?,
+      tick: json['tick'] == null
+          ? null
+          : Ticks.fromJson(json['tick'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_SymbolTickToJson(_$_SymbolTick instance) =>
@@ -19,9 +21,9 @@ Map<String, dynamic> _$$_SymbolTickToJson(_$_SymbolTick instance) =>
     };
 
 _$_Ticks _$$_TicksFromJson(Map<String, dynamic> json) => _$_Ticks(
-      ask: json['ask'] as int,
-      bid: json['bid'] as int,
-      quota: json['quota'] as int,
+      ask: json['ask'] as int?,
+      bid: json['bid'] as int?,
+      quota: json['quota'] as int?,
     );
 
 Map<String, dynamic> _$$_TicksToJson(_$_Ticks instance) => <String, dynamic>{

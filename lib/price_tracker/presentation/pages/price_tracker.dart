@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:price_tracker/price_tracker/presentation/state/price_tracker_cubit.dart';
-import 'package:price_tracker/price_tracker/presentation/state/price_tracker_state.dart';
 
 class PriceTracker extends StatefulWidget {
   const PriceTracker({super.key});

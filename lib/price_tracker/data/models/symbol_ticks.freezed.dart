@@ -21,9 +21,9 @@ SymbolTick _$SymbolTickFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SymbolTick {
   @JsonKey(name: 'msg_type')
-  String get messageType => throw _privateConstructorUsedError;
+  String? get messageType => throw _privateConstructorUsedError;
   @JsonKey(name: 'tick')
-  Ticks get tick => throw _privateConstructorUsedError;
+  Ticks? get tick => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,10 +38,10 @@ abstract class $SymbolTickCopyWith<$Res> {
       _$SymbolTickCopyWithImpl<$Res, SymbolTick>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'msg_type') String messageType,
-      @JsonKey(name: 'tick') Ticks tick});
+      {@JsonKey(name: 'msg_type') String? messageType,
+      @JsonKey(name: 'tick') Ticks? tick});
 
-  $TicksCopyWith<$Res> get tick;
+  $TicksCopyWith<$Res>? get tick;
 }
 
 /// @nodoc
@@ -57,25 +57,29 @@ class _$SymbolTickCopyWithImpl<$Res, $Val extends SymbolTick>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? messageType = null,
-    Object? tick = null,
+    Object? messageType = freezed,
+    Object? tick = freezed,
   }) {
     return _then(_value.copyWith(
-      messageType: null == messageType
+      messageType: freezed == messageType
           ? _value.messageType
           : messageType // ignore: cast_nullable_to_non_nullable
-              as String,
-      tick: null == tick
+              as String?,
+      tick: freezed == tick
           ? _value.tick
           : tick // ignore: cast_nullable_to_non_nullable
-              as Ticks,
+              as Ticks?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $TicksCopyWith<$Res> get tick {
-    return $TicksCopyWith<$Res>(_value.tick, (value) {
+  $TicksCopyWith<$Res>? get tick {
+    if (_value.tick == null) {
+      return null;
+    }
+
+    return $TicksCopyWith<$Res>(_value.tick!, (value) {
       return _then(_value.copyWith(tick: value) as $Val);
     });
   }
@@ -90,11 +94,11 @@ abstract class _$$_SymbolTickCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'msg_type') String messageType,
-      @JsonKey(name: 'tick') Ticks tick});
+      {@JsonKey(name: 'msg_type') String? messageType,
+      @JsonKey(name: 'tick') Ticks? tick});
 
   @override
-  $TicksCopyWith<$Res> get tick;
+  $TicksCopyWith<$Res>? get tick;
 }
 
 /// @nodoc
@@ -108,18 +112,18 @@ class __$$_SymbolTickCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? messageType = null,
-    Object? tick = null,
+    Object? messageType = freezed,
+    Object? tick = freezed,
   }) {
     return _then(_$_SymbolTick(
-      messageType: null == messageType
+      messageType: freezed == messageType
           ? _value.messageType
           : messageType // ignore: cast_nullable_to_non_nullable
-              as String,
-      tick: null == tick
+              as String?,
+      tick: freezed == tick
           ? _value.tick
           : tick // ignore: cast_nullable_to_non_nullable
-              as Ticks,
+              as Ticks?,
     ));
   }
 }
@@ -136,10 +140,10 @@ class _$_SymbolTick implements _SymbolTick {
 
   @override
   @JsonKey(name: 'msg_type')
-  final String messageType;
+  final String? messageType;
   @override
   @JsonKey(name: 'tick')
-  final Ticks tick;
+  final Ticks? tick;
 
   @override
   String toString() {
@@ -176,18 +180,18 @@ class _$_SymbolTick implements _SymbolTick {
 
 abstract class _SymbolTick implements SymbolTick {
   const factory _SymbolTick(
-      {@JsonKey(name: 'msg_type') required final String messageType,
-      @JsonKey(name: 'tick') required final Ticks tick}) = _$_SymbolTick;
+      {@JsonKey(name: 'msg_type') required final String? messageType,
+      @JsonKey(name: 'tick') required final Ticks? tick}) = _$_SymbolTick;
 
   factory _SymbolTick.fromJson(Map<String, dynamic> json) =
       _$_SymbolTick.fromJson;
 
   @override
   @JsonKey(name: 'msg_type')
-  String get messageType;
+  String? get messageType;
   @override
   @JsonKey(name: 'tick')
-  Ticks get tick;
+  Ticks? get tick;
   @override
   @JsonKey(ignore: true)
   _$$_SymbolTickCopyWith<_$_SymbolTick> get copyWith =>
@@ -201,11 +205,11 @@ Ticks _$TicksFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Ticks {
   @JsonKey(name: 'ask')
-  int get ask => throw _privateConstructorUsedError;
+  int? get ask => throw _privateConstructorUsedError;
   @JsonKey(name: 'bid')
-  int get bid => throw _privateConstructorUsedError;
+  int? get bid => throw _privateConstructorUsedError;
   @JsonKey(name: 'quota')
-  int get quota => throw _privateConstructorUsedError;
+  int? get quota => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -218,9 +222,9 @@ abstract class $TicksCopyWith<$Res> {
       _$TicksCopyWithImpl<$Res, Ticks>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'ask') int ask,
-      @JsonKey(name: 'bid') int bid,
-      @JsonKey(name: 'quota') int quota});
+      {@JsonKey(name: 'ask') int? ask,
+      @JsonKey(name: 'bid') int? bid,
+      @JsonKey(name: 'quota') int? quota});
 }
 
 /// @nodoc
@@ -236,23 +240,23 @@ class _$TicksCopyWithImpl<$Res, $Val extends Ticks>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ask = null,
-    Object? bid = null,
-    Object? quota = null,
+    Object? ask = freezed,
+    Object? bid = freezed,
+    Object? quota = freezed,
   }) {
     return _then(_value.copyWith(
-      ask: null == ask
+      ask: freezed == ask
           ? _value.ask
           : ask // ignore: cast_nullable_to_non_nullable
-              as int,
-      bid: null == bid
+              as int?,
+      bid: freezed == bid
           ? _value.bid
           : bid // ignore: cast_nullable_to_non_nullable
-              as int,
-      quota: null == quota
+              as int?,
+      quota: freezed == quota
           ? _value.quota
           : quota // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -264,9 +268,9 @@ abstract class _$$_TicksCopyWith<$Res> implements $TicksCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'ask') int ask,
-      @JsonKey(name: 'bid') int bid,
-      @JsonKey(name: 'quota') int quota});
+      {@JsonKey(name: 'ask') int? ask,
+      @JsonKey(name: 'bid') int? bid,
+      @JsonKey(name: 'quota') int? quota});
 }
 
 /// @nodoc
@@ -278,23 +282,23 @@ class __$$_TicksCopyWithImpl<$Res> extends _$TicksCopyWithImpl<$Res, _$_Ticks>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? ask = null,
-    Object? bid = null,
-    Object? quota = null,
+    Object? ask = freezed,
+    Object? bid = freezed,
+    Object? quota = freezed,
   }) {
     return _then(_$_Ticks(
-      ask: null == ask
+      ask: freezed == ask
           ? _value.ask
           : ask // ignore: cast_nullable_to_non_nullable
-              as int,
-      bid: null == bid
+              as int?,
+      bid: freezed == bid
           ? _value.bid
           : bid // ignore: cast_nullable_to_non_nullable
-              as int,
-      quota: null == quota
+              as int?,
+      quota: freezed == quota
           ? _value.quota
           : quota // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -312,13 +316,13 @@ class _$_Ticks implements _Ticks {
 
   @override
   @JsonKey(name: 'ask')
-  final int ask;
+  final int? ask;
   @override
   @JsonKey(name: 'bid')
-  final int bid;
+  final int? bid;
   @override
   @JsonKey(name: 'quota')
-  final int quota;
+  final int? quota;
 
   @override
   String toString() {
@@ -355,21 +359,21 @@ class _$_Ticks implements _Ticks {
 
 abstract class _Ticks implements Ticks {
   const factory _Ticks(
-      {@JsonKey(name: 'ask') required final int ask,
-      @JsonKey(name: 'bid') required final int bid,
-      @JsonKey(name: 'quota') required final int quota}) = _$_Ticks;
+      {@JsonKey(name: 'ask') required final int? ask,
+      @JsonKey(name: 'bid') required final int? bid,
+      @JsonKey(name: 'quota') required final int? quota}) = _$_Ticks;
 
   factory _Ticks.fromJson(Map<String, dynamic> json) = _$_Ticks.fromJson;
 
   @override
   @JsonKey(name: 'ask')
-  int get ask;
+  int? get ask;
   @override
   @JsonKey(name: 'bid')
-  int get bid;
+  int? get bid;
   @override
   @JsonKey(name: 'quota')
-  int get quota;
+  int? get quota;
   @override
   @JsonKey(ignore: true)
   _$$_TicksCopyWith<_$_Ticks> get copyWith =>
