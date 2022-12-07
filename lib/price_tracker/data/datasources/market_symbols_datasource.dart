@@ -9,11 +9,11 @@ abstract class MarketSymbolsDatasource implements RemoteDatasource {
   Future<List<MarketSymbol>> getMarketSymbols();
 }
 
-class MarketDatasourceImpl extends MarketSymbolsDatasource {
+class MarketSymbolsDatasourceImpl extends MarketSymbolsDatasource {
 
   final NetworkService _networkService;
 
-  MarketDatasourceImpl(this._networkService);
+  MarketSymbolsDatasourceImpl(this._networkService);
 
   @override
   // TODO: implement dataStreamController
