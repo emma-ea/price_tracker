@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         PriceTrackerModuleInjector.resolve<AvailableSymbols>(),
         PriceTrackerModuleInjector.resolve<AvailableTicks>(),
         PriceTrackerModuleInjector.resolve<DisposeConnection>()
-      ),
+      )..getMarketSymbols(),
       child: const MaterialApp(
         title: 'Price Tracker',
         home: PriceTracker(),

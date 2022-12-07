@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:price_tracker/core/logging_utils.dart';
 import 'package:price_tracker/price_tracker/domain/usecases/available_market_symbol.dart';
@@ -34,12 +35,11 @@ class PriceTrackerCubit extends Cubit<PriceTrackerState> {
     emit(PriceTrackerState.loading(payload: state.payload.copyWith()));
     
     final results = await _marketSymbols();
-    logger.i(results);
 
     results.fold(
       (l) => emit(PriceTrackerState.error(payload: state.payload.copyWith(error: l.message))), 
       (r) {
-        emit(PriceTrackerState.loaded(payload: state.payload.copyWith(symbols: r)));
+        r!.listen((event) => emit(PriceTrackerState.loaded(payload: state.payload.copyWith(symbols: event))));
       },
     );
   }
@@ -52,7 +52,7 @@ class PriceTrackerCubit extends Cubit<PriceTrackerState> {
     results.fold(
       (l) => emit(PriceTrackerState.error(payload: state.payload.copyWith(error: l.message))), 
       (r) {
-        emit(PriceTrackerState.loaded(payload: state.payload.copyWith(ticks: r)));
+        r!.listen((event) => emit(PriceTrackerState.loaded(payload: state.payload.copyWith(ticks: event))));
       },
     );
   }

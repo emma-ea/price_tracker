@@ -29,7 +29,7 @@ class MarketSymbolsDatasourceImpl extends MarketSymbolsDatasource {
     };
     final channel = _networkService.request(Endpoints.activeSymbols, params: params);
     
-    return channel.stream.map((event) => MarketSymbol.fromJson(event));
+    return channel.stream.map((event) => MarketSymbol.fromJson(jsonDecode(event)));
   }
   
 }

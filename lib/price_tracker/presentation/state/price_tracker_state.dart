@@ -12,6 +12,12 @@ abstract class PriceTrackerState with _$PriceTrackerState {
   const factory PriceTrackerState.loaded({required PriceTrackerStatePayload payload}) =
     _LoadedPriceTrackerState; 
 
+  const factory PriceTrackerState.symbolsLoaded({required PriceTrackerStatePayload payload}) = 
+    _SymbolsLoadedPriceTrackerState;
+
+  const factory PriceTrackerState.ticksLoaded({required PriceTrackerStatePayload payload}) = 
+    _TicksLoadedPriceTrackerState; 
+
   const factory PriceTrackerState.error({required PriceTrackerStatePayload payload}) = 
    _ErrorPriceTrackerState;
 
@@ -20,8 +26,8 @@ abstract class PriceTrackerState with _$PriceTrackerState {
 @freezed
 abstract class PriceTrackerStatePayload with _$PriceTrackerStatePayload {
   const factory PriceTrackerStatePayload({
-    required Stream<MarketSymbol>? symbols,
-    required Stream<SymbolTick>? ticks,
+    required MarketSymbol? symbols,
+    required SymbolTick? ticks,
     required String error,
   }) = _PriceTrackerStatePayload; 
 }

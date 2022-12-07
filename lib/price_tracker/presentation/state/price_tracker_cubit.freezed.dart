@@ -22,6 +22,8 @@ mixin _$PriceTrackerState {
     required TResult Function(PriceTrackerStatePayload payload) initial,
     required TResult Function(PriceTrackerStatePayload payload) loading,
     required TResult Function(PriceTrackerStatePayload payload) loaded,
+    required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
     required TResult Function(PriceTrackerStatePayload payload) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,6 +32,8 @@ mixin _$PriceTrackerState {
     TResult? Function(PriceTrackerStatePayload payload)? initial,
     TResult? Function(PriceTrackerStatePayload payload)? loading,
     TResult? Function(PriceTrackerStatePayload payload)? loaded,
+    TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
     TResult? Function(PriceTrackerStatePayload payload)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -38,6 +42,8 @@ mixin _$PriceTrackerState {
     TResult Function(PriceTrackerStatePayload payload)? initial,
     TResult Function(PriceTrackerStatePayload payload)? loading,
     TResult Function(PriceTrackerStatePayload payload)? loaded,
+    TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
     TResult Function(PriceTrackerStatePayload payload)? error,
     required TResult orElse(),
   }) =>
@@ -47,6 +53,9 @@ mixin _$PriceTrackerState {
     required TResult Function(_InitialPriceTrackerState value) initial,
     required TResult Function(_LoadingPriceTrackerState value) loading,
     required TResult Function(_LoadedPriceTrackerState value) loaded,
+    required TResult Function(_SymbolsLoadedPriceTrackerState value)
+        symbolsLoaded,
+    required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
     required TResult Function(_ErrorPriceTrackerState value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +64,8 @@ mixin _$PriceTrackerState {
     TResult? Function(_InitialPriceTrackerState value)? initial,
     TResult? Function(_LoadingPriceTrackerState value)? loading,
     TResult? Function(_LoadedPriceTrackerState value)? loaded,
+    TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
     TResult? Function(_ErrorPriceTrackerState value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +74,8 @@ mixin _$PriceTrackerState {
     TResult Function(_InitialPriceTrackerState value)? initial,
     TResult Function(_LoadingPriceTrackerState value)? loading,
     TResult Function(_LoadedPriceTrackerState value)? loaded,
+    TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
     TResult Function(_ErrorPriceTrackerState value)? error,
     required TResult orElse(),
   }) =>
@@ -155,15 +168,25 @@ class __$$_InitialPriceTrackerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InitialPriceTrackerState implements _InitialPriceTrackerState {
+class _$_InitialPriceTrackerState
+    with DiagnosticableTreeMixin
+    implements _InitialPriceTrackerState {
   const _$_InitialPriceTrackerState({required this.payload});
 
   @override
   final PriceTrackerStatePayload payload;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'PriceTrackerState.initial(payload: $payload)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PriceTrackerState.initial'))
+      ..add(DiagnosticsProperty('payload', payload));
   }
 
   @override
@@ -190,6 +213,8 @@ class _$_InitialPriceTrackerState implements _InitialPriceTrackerState {
     required TResult Function(PriceTrackerStatePayload payload) initial,
     required TResult Function(PriceTrackerStatePayload payload) loading,
     required TResult Function(PriceTrackerStatePayload payload) loaded,
+    required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
     required TResult Function(PriceTrackerStatePayload payload) error,
   }) {
     return initial(payload);
@@ -201,6 +226,8 @@ class _$_InitialPriceTrackerState implements _InitialPriceTrackerState {
     TResult? Function(PriceTrackerStatePayload payload)? initial,
     TResult? Function(PriceTrackerStatePayload payload)? loading,
     TResult? Function(PriceTrackerStatePayload payload)? loaded,
+    TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
     TResult? Function(PriceTrackerStatePayload payload)? error,
   }) {
     return initial?.call(payload);
@@ -212,6 +239,8 @@ class _$_InitialPriceTrackerState implements _InitialPriceTrackerState {
     TResult Function(PriceTrackerStatePayload payload)? initial,
     TResult Function(PriceTrackerStatePayload payload)? loading,
     TResult Function(PriceTrackerStatePayload payload)? loaded,
+    TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
     TResult Function(PriceTrackerStatePayload payload)? error,
     required TResult orElse(),
   }) {
@@ -227,6 +256,9 @@ class _$_InitialPriceTrackerState implements _InitialPriceTrackerState {
     required TResult Function(_InitialPriceTrackerState value) initial,
     required TResult Function(_LoadingPriceTrackerState value) loading,
     required TResult Function(_LoadedPriceTrackerState value) loaded,
+    required TResult Function(_SymbolsLoadedPriceTrackerState value)
+        symbolsLoaded,
+    required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
     required TResult Function(_ErrorPriceTrackerState value) error,
   }) {
     return initial(this);
@@ -238,6 +270,8 @@ class _$_InitialPriceTrackerState implements _InitialPriceTrackerState {
     TResult? Function(_InitialPriceTrackerState value)? initial,
     TResult? Function(_LoadingPriceTrackerState value)? loading,
     TResult? Function(_LoadedPriceTrackerState value)? loaded,
+    TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
     TResult? Function(_ErrorPriceTrackerState value)? error,
   }) {
     return initial?.call(this);
@@ -249,6 +283,8 @@ class _$_InitialPriceTrackerState implements _InitialPriceTrackerState {
     TResult Function(_InitialPriceTrackerState value)? initial,
     TResult Function(_LoadingPriceTrackerState value)? loading,
     TResult Function(_LoadedPriceTrackerState value)? loaded,
+    TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
     TResult Function(_ErrorPriceTrackerState value)? error,
     required TResult orElse(),
   }) {
@@ -311,15 +347,25 @@ class __$$_LoadingPriceTrackerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadingPriceTrackerState implements _LoadingPriceTrackerState {
+class _$_LoadingPriceTrackerState
+    with DiagnosticableTreeMixin
+    implements _LoadingPriceTrackerState {
   const _$_LoadingPriceTrackerState({required this.payload});
 
   @override
   final PriceTrackerStatePayload payload;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'PriceTrackerState.loading(payload: $payload)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PriceTrackerState.loading'))
+      ..add(DiagnosticsProperty('payload', payload));
   }
 
   @override
@@ -346,6 +392,8 @@ class _$_LoadingPriceTrackerState implements _LoadingPriceTrackerState {
     required TResult Function(PriceTrackerStatePayload payload) initial,
     required TResult Function(PriceTrackerStatePayload payload) loading,
     required TResult Function(PriceTrackerStatePayload payload) loaded,
+    required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
     required TResult Function(PriceTrackerStatePayload payload) error,
   }) {
     return loading(payload);
@@ -357,6 +405,8 @@ class _$_LoadingPriceTrackerState implements _LoadingPriceTrackerState {
     TResult? Function(PriceTrackerStatePayload payload)? initial,
     TResult? Function(PriceTrackerStatePayload payload)? loading,
     TResult? Function(PriceTrackerStatePayload payload)? loaded,
+    TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
     TResult? Function(PriceTrackerStatePayload payload)? error,
   }) {
     return loading?.call(payload);
@@ -368,6 +418,8 @@ class _$_LoadingPriceTrackerState implements _LoadingPriceTrackerState {
     TResult Function(PriceTrackerStatePayload payload)? initial,
     TResult Function(PriceTrackerStatePayload payload)? loading,
     TResult Function(PriceTrackerStatePayload payload)? loaded,
+    TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
     TResult Function(PriceTrackerStatePayload payload)? error,
     required TResult orElse(),
   }) {
@@ -383,6 +435,9 @@ class _$_LoadingPriceTrackerState implements _LoadingPriceTrackerState {
     required TResult Function(_InitialPriceTrackerState value) initial,
     required TResult Function(_LoadingPriceTrackerState value) loading,
     required TResult Function(_LoadedPriceTrackerState value) loaded,
+    required TResult Function(_SymbolsLoadedPriceTrackerState value)
+        symbolsLoaded,
+    required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
     required TResult Function(_ErrorPriceTrackerState value) error,
   }) {
     return loading(this);
@@ -394,6 +449,8 @@ class _$_LoadingPriceTrackerState implements _LoadingPriceTrackerState {
     TResult? Function(_InitialPriceTrackerState value)? initial,
     TResult? Function(_LoadingPriceTrackerState value)? loading,
     TResult? Function(_LoadedPriceTrackerState value)? loaded,
+    TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
     TResult? Function(_ErrorPriceTrackerState value)? error,
   }) {
     return loading?.call(this);
@@ -405,6 +462,8 @@ class _$_LoadingPriceTrackerState implements _LoadingPriceTrackerState {
     TResult Function(_InitialPriceTrackerState value)? initial,
     TResult Function(_LoadingPriceTrackerState value)? loading,
     TResult Function(_LoadedPriceTrackerState value)? loaded,
+    TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
     TResult Function(_ErrorPriceTrackerState value)? error,
     required TResult orElse(),
   }) {
@@ -466,15 +525,25 @@ class __$$_LoadedPriceTrackerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadedPriceTrackerState implements _LoadedPriceTrackerState {
+class _$_LoadedPriceTrackerState
+    with DiagnosticableTreeMixin
+    implements _LoadedPriceTrackerState {
   const _$_LoadedPriceTrackerState({required this.payload});
 
   @override
   final PriceTrackerStatePayload payload;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'PriceTrackerState.loaded(payload: $payload)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PriceTrackerState.loaded'))
+      ..add(DiagnosticsProperty('payload', payload));
   }
 
   @override
@@ -502,6 +571,8 @@ class _$_LoadedPriceTrackerState implements _LoadedPriceTrackerState {
     required TResult Function(PriceTrackerStatePayload payload) initial,
     required TResult Function(PriceTrackerStatePayload payload) loading,
     required TResult Function(PriceTrackerStatePayload payload) loaded,
+    required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
     required TResult Function(PriceTrackerStatePayload payload) error,
   }) {
     return loaded(payload);
@@ -513,6 +584,8 @@ class _$_LoadedPriceTrackerState implements _LoadedPriceTrackerState {
     TResult? Function(PriceTrackerStatePayload payload)? initial,
     TResult? Function(PriceTrackerStatePayload payload)? loading,
     TResult? Function(PriceTrackerStatePayload payload)? loaded,
+    TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
     TResult? Function(PriceTrackerStatePayload payload)? error,
   }) {
     return loaded?.call(payload);
@@ -524,6 +597,8 @@ class _$_LoadedPriceTrackerState implements _LoadedPriceTrackerState {
     TResult Function(PriceTrackerStatePayload payload)? initial,
     TResult Function(PriceTrackerStatePayload payload)? loading,
     TResult Function(PriceTrackerStatePayload payload)? loaded,
+    TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
     TResult Function(PriceTrackerStatePayload payload)? error,
     required TResult orElse(),
   }) {
@@ -539,6 +614,9 @@ class _$_LoadedPriceTrackerState implements _LoadedPriceTrackerState {
     required TResult Function(_InitialPriceTrackerState value) initial,
     required TResult Function(_LoadingPriceTrackerState value) loading,
     required TResult Function(_LoadedPriceTrackerState value) loaded,
+    required TResult Function(_SymbolsLoadedPriceTrackerState value)
+        symbolsLoaded,
+    required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
     required TResult Function(_ErrorPriceTrackerState value) error,
   }) {
     return loaded(this);
@@ -550,6 +628,8 @@ class _$_LoadedPriceTrackerState implements _LoadedPriceTrackerState {
     TResult? Function(_InitialPriceTrackerState value)? initial,
     TResult? Function(_LoadingPriceTrackerState value)? loading,
     TResult? Function(_LoadedPriceTrackerState value)? loaded,
+    TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
     TResult? Function(_ErrorPriceTrackerState value)? error,
   }) {
     return loaded?.call(this);
@@ -561,6 +641,8 @@ class _$_LoadedPriceTrackerState implements _LoadedPriceTrackerState {
     TResult Function(_InitialPriceTrackerState value)? initial,
     TResult Function(_LoadingPriceTrackerState value)? loading,
     TResult Function(_LoadedPriceTrackerState value)? loaded,
+    TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
     TResult Function(_ErrorPriceTrackerState value)? error,
     required TResult orElse(),
   }) {
@@ -581,6 +663,368 @@ abstract class _LoadedPriceTrackerState implements PriceTrackerState {
   @override
   @JsonKey(ignore: true)
   _$$_LoadedPriceTrackerStateCopyWith<_$_LoadedPriceTrackerState>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SymbolsLoadedPriceTrackerStateCopyWith<$Res>
+    implements $PriceTrackerStateCopyWith<$Res> {
+  factory _$$_SymbolsLoadedPriceTrackerStateCopyWith(
+          _$_SymbolsLoadedPriceTrackerState value,
+          $Res Function(_$_SymbolsLoadedPriceTrackerState) then) =
+      __$$_SymbolsLoadedPriceTrackerStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({PriceTrackerStatePayload payload});
+
+  @override
+  $PriceTrackerStatePayloadCopyWith<$Res> get payload;
+}
+
+/// @nodoc
+class __$$_SymbolsLoadedPriceTrackerStateCopyWithImpl<$Res>
+    extends _$PriceTrackerStateCopyWithImpl<$Res,
+        _$_SymbolsLoadedPriceTrackerState>
+    implements _$$_SymbolsLoadedPriceTrackerStateCopyWith<$Res> {
+  __$$_SymbolsLoadedPriceTrackerStateCopyWithImpl(
+      _$_SymbolsLoadedPriceTrackerState _value,
+      $Res Function(_$_SymbolsLoadedPriceTrackerState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? payload = null,
+  }) {
+    return _then(_$_SymbolsLoadedPriceTrackerState(
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as PriceTrackerStatePayload,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SymbolsLoadedPriceTrackerState
+    with DiagnosticableTreeMixin
+    implements _SymbolsLoadedPriceTrackerState {
+  const _$_SymbolsLoadedPriceTrackerState({required this.payload});
+
+  @override
+  final PriceTrackerStatePayload payload;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PriceTrackerState.symbolsLoaded(payload: $payload)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PriceTrackerState.symbolsLoaded'))
+      ..add(DiagnosticsProperty('payload', payload));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SymbolsLoadedPriceTrackerState &&
+            (identical(other.payload, payload) || other.payload == payload));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, payload);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SymbolsLoadedPriceTrackerStateCopyWith<_$_SymbolsLoadedPriceTrackerState>
+      get copyWith => __$$_SymbolsLoadedPriceTrackerStateCopyWithImpl<
+          _$_SymbolsLoadedPriceTrackerState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PriceTrackerStatePayload payload) initial,
+    required TResult Function(PriceTrackerStatePayload payload) loading,
+    required TResult Function(PriceTrackerStatePayload payload) loaded,
+    required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) error,
+  }) {
+    return symbolsLoaded(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PriceTrackerStatePayload payload)? initial,
+    TResult? Function(PriceTrackerStatePayload payload)? loading,
+    TResult? Function(PriceTrackerStatePayload payload)? loaded,
+    TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? error,
+  }) {
+    return symbolsLoaded?.call(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PriceTrackerStatePayload payload)? initial,
+    TResult Function(PriceTrackerStatePayload payload)? loading,
+    TResult Function(PriceTrackerStatePayload payload)? loaded,
+    TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? error,
+    required TResult orElse(),
+  }) {
+    if (symbolsLoaded != null) {
+      return symbolsLoaded(payload);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialPriceTrackerState value) initial,
+    required TResult Function(_LoadingPriceTrackerState value) loading,
+    required TResult Function(_LoadedPriceTrackerState value) loaded,
+    required TResult Function(_SymbolsLoadedPriceTrackerState value)
+        symbolsLoaded,
+    required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
+    required TResult Function(_ErrorPriceTrackerState value) error,
+  }) {
+    return symbolsLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialPriceTrackerState value)? initial,
+    TResult? Function(_LoadingPriceTrackerState value)? loading,
+    TResult? Function(_LoadedPriceTrackerState value)? loaded,
+    TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult? Function(_ErrorPriceTrackerState value)? error,
+  }) {
+    return symbolsLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialPriceTrackerState value)? initial,
+    TResult Function(_LoadingPriceTrackerState value)? loading,
+    TResult Function(_LoadedPriceTrackerState value)? loaded,
+    TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult Function(_ErrorPriceTrackerState value)? error,
+    required TResult orElse(),
+  }) {
+    if (symbolsLoaded != null) {
+      return symbolsLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SymbolsLoadedPriceTrackerState implements PriceTrackerState {
+  const factory _SymbolsLoadedPriceTrackerState(
+          {required final PriceTrackerStatePayload payload}) =
+      _$_SymbolsLoadedPriceTrackerState;
+
+  @override
+  PriceTrackerStatePayload get payload;
+  @override
+  @JsonKey(ignore: true)
+  _$$_SymbolsLoadedPriceTrackerStateCopyWith<_$_SymbolsLoadedPriceTrackerState>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_TicksLoadedPriceTrackerStateCopyWith<$Res>
+    implements $PriceTrackerStateCopyWith<$Res> {
+  factory _$$_TicksLoadedPriceTrackerStateCopyWith(
+          _$_TicksLoadedPriceTrackerState value,
+          $Res Function(_$_TicksLoadedPriceTrackerState) then) =
+      __$$_TicksLoadedPriceTrackerStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({PriceTrackerStatePayload payload});
+
+  @override
+  $PriceTrackerStatePayloadCopyWith<$Res> get payload;
+}
+
+/// @nodoc
+class __$$_TicksLoadedPriceTrackerStateCopyWithImpl<$Res>
+    extends _$PriceTrackerStateCopyWithImpl<$Res,
+        _$_TicksLoadedPriceTrackerState>
+    implements _$$_TicksLoadedPriceTrackerStateCopyWith<$Res> {
+  __$$_TicksLoadedPriceTrackerStateCopyWithImpl(
+      _$_TicksLoadedPriceTrackerState _value,
+      $Res Function(_$_TicksLoadedPriceTrackerState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? payload = null,
+  }) {
+    return _then(_$_TicksLoadedPriceTrackerState(
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as PriceTrackerStatePayload,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_TicksLoadedPriceTrackerState
+    with DiagnosticableTreeMixin
+    implements _TicksLoadedPriceTrackerState {
+  const _$_TicksLoadedPriceTrackerState({required this.payload});
+
+  @override
+  final PriceTrackerStatePayload payload;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PriceTrackerState.ticksLoaded(payload: $payload)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PriceTrackerState.ticksLoaded'))
+      ..add(DiagnosticsProperty('payload', payload));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TicksLoadedPriceTrackerState &&
+            (identical(other.payload, payload) || other.payload == payload));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, payload);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TicksLoadedPriceTrackerStateCopyWith<_$_TicksLoadedPriceTrackerState>
+      get copyWith => __$$_TicksLoadedPriceTrackerStateCopyWithImpl<
+          _$_TicksLoadedPriceTrackerState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PriceTrackerStatePayload payload) initial,
+    required TResult Function(PriceTrackerStatePayload payload) loading,
+    required TResult Function(PriceTrackerStatePayload payload) loaded,
+    required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) error,
+  }) {
+    return ticksLoaded(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PriceTrackerStatePayload payload)? initial,
+    TResult? Function(PriceTrackerStatePayload payload)? loading,
+    TResult? Function(PriceTrackerStatePayload payload)? loaded,
+    TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? error,
+  }) {
+    return ticksLoaded?.call(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PriceTrackerStatePayload payload)? initial,
+    TResult Function(PriceTrackerStatePayload payload)? loading,
+    TResult Function(PriceTrackerStatePayload payload)? loaded,
+    TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? error,
+    required TResult orElse(),
+  }) {
+    if (ticksLoaded != null) {
+      return ticksLoaded(payload);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialPriceTrackerState value) initial,
+    required TResult Function(_LoadingPriceTrackerState value) loading,
+    required TResult Function(_LoadedPriceTrackerState value) loaded,
+    required TResult Function(_SymbolsLoadedPriceTrackerState value)
+        symbolsLoaded,
+    required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
+    required TResult Function(_ErrorPriceTrackerState value) error,
+  }) {
+    return ticksLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialPriceTrackerState value)? initial,
+    TResult? Function(_LoadingPriceTrackerState value)? loading,
+    TResult? Function(_LoadedPriceTrackerState value)? loaded,
+    TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult? Function(_ErrorPriceTrackerState value)? error,
+  }) {
+    return ticksLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialPriceTrackerState value)? initial,
+    TResult Function(_LoadingPriceTrackerState value)? loading,
+    TResult Function(_LoadedPriceTrackerState value)? loaded,
+    TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult Function(_ErrorPriceTrackerState value)? error,
+    required TResult orElse(),
+  }) {
+    if (ticksLoaded != null) {
+      return ticksLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TicksLoadedPriceTrackerState implements PriceTrackerState {
+  const factory _TicksLoadedPriceTrackerState(
+          {required final PriceTrackerStatePayload payload}) =
+      _$_TicksLoadedPriceTrackerState;
+
+  @override
+  PriceTrackerStatePayload get payload;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TicksLoadedPriceTrackerStateCopyWith<_$_TicksLoadedPriceTrackerState>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -622,15 +1066,25 @@ class __$$_ErrorPriceTrackerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ErrorPriceTrackerState implements _ErrorPriceTrackerState {
+class _$_ErrorPriceTrackerState
+    with DiagnosticableTreeMixin
+    implements _ErrorPriceTrackerState {
   const _$_ErrorPriceTrackerState({required this.payload});
 
   @override
   final PriceTrackerStatePayload payload;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'PriceTrackerState.error(payload: $payload)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PriceTrackerState.error'))
+      ..add(DiagnosticsProperty('payload', payload));
   }
 
   @override
@@ -657,6 +1111,8 @@ class _$_ErrorPriceTrackerState implements _ErrorPriceTrackerState {
     required TResult Function(PriceTrackerStatePayload payload) initial,
     required TResult Function(PriceTrackerStatePayload payload) loading,
     required TResult Function(PriceTrackerStatePayload payload) loaded,
+    required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
     required TResult Function(PriceTrackerStatePayload payload) error,
   }) {
     return error(payload);
@@ -668,6 +1124,8 @@ class _$_ErrorPriceTrackerState implements _ErrorPriceTrackerState {
     TResult? Function(PriceTrackerStatePayload payload)? initial,
     TResult? Function(PriceTrackerStatePayload payload)? loading,
     TResult? Function(PriceTrackerStatePayload payload)? loaded,
+    TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
     TResult? Function(PriceTrackerStatePayload payload)? error,
   }) {
     return error?.call(payload);
@@ -679,6 +1137,8 @@ class _$_ErrorPriceTrackerState implements _ErrorPriceTrackerState {
     TResult Function(PriceTrackerStatePayload payload)? initial,
     TResult Function(PriceTrackerStatePayload payload)? loading,
     TResult Function(PriceTrackerStatePayload payload)? loaded,
+    TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
     TResult Function(PriceTrackerStatePayload payload)? error,
     required TResult orElse(),
   }) {
@@ -694,6 +1154,9 @@ class _$_ErrorPriceTrackerState implements _ErrorPriceTrackerState {
     required TResult Function(_InitialPriceTrackerState value) initial,
     required TResult Function(_LoadingPriceTrackerState value) loading,
     required TResult Function(_LoadedPriceTrackerState value) loaded,
+    required TResult Function(_SymbolsLoadedPriceTrackerState value)
+        symbolsLoaded,
+    required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
     required TResult Function(_ErrorPriceTrackerState value) error,
   }) {
     return error(this);
@@ -705,6 +1168,8 @@ class _$_ErrorPriceTrackerState implements _ErrorPriceTrackerState {
     TResult? Function(_InitialPriceTrackerState value)? initial,
     TResult? Function(_LoadingPriceTrackerState value)? loading,
     TResult? Function(_LoadedPriceTrackerState value)? loaded,
+    TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
     TResult? Function(_ErrorPriceTrackerState value)? error,
   }) {
     return error?.call(this);
@@ -716,6 +1181,8 @@ class _$_ErrorPriceTrackerState implements _ErrorPriceTrackerState {
     TResult Function(_InitialPriceTrackerState value)? initial,
     TResult Function(_LoadingPriceTrackerState value)? loading,
     TResult Function(_LoadedPriceTrackerState value)? loaded,
+    TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
     TResult Function(_ErrorPriceTrackerState value)? error,
     required TResult orElse(),
   }) {
@@ -741,8 +1208,8 @@ abstract class _ErrorPriceTrackerState implements PriceTrackerState {
 
 /// @nodoc
 mixin _$PriceTrackerStatePayload {
-  Stream<MarketSymbol>? get symbols => throw _privateConstructorUsedError;
-  Stream<SymbolTick>? get ticks => throw _privateConstructorUsedError;
+  MarketSymbol? get symbols => throw _privateConstructorUsedError;
+  SymbolTick? get ticks => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -756,8 +1223,10 @@ abstract class $PriceTrackerStatePayloadCopyWith<$Res> {
           $Res Function(PriceTrackerStatePayload) then) =
       _$PriceTrackerStatePayloadCopyWithImpl<$Res, PriceTrackerStatePayload>;
   @useResult
-  $Res call(
-      {Stream<MarketSymbol>? symbols, Stream<SymbolTick>? ticks, String error});
+  $Res call({MarketSymbol? symbols, SymbolTick? ticks, String error});
+
+  $MarketSymbolCopyWith<$Res>? get symbols;
+  $SymbolTickCopyWith<$Res>? get ticks;
 }
 
 /// @nodoc
@@ -782,16 +1251,40 @@ class _$PriceTrackerStatePayloadCopyWithImpl<$Res,
       symbols: freezed == symbols
           ? _value.symbols
           : symbols // ignore: cast_nullable_to_non_nullable
-              as Stream<MarketSymbol>?,
+              as MarketSymbol?,
       ticks: freezed == ticks
           ? _value.ticks
           : ticks // ignore: cast_nullable_to_non_nullable
-              as Stream<SymbolTick>?,
+              as SymbolTick?,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MarketSymbolCopyWith<$Res>? get symbols {
+    if (_value.symbols == null) {
+      return null;
+    }
+
+    return $MarketSymbolCopyWith<$Res>(_value.symbols!, (value) {
+      return _then(_value.copyWith(symbols: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SymbolTickCopyWith<$Res>? get ticks {
+    if (_value.ticks == null) {
+      return null;
+    }
+
+    return $SymbolTickCopyWith<$Res>(_value.ticks!, (value) {
+      return _then(_value.copyWith(ticks: value) as $Val);
+    });
   }
 }
 
@@ -804,8 +1297,12 @@ abstract class _$$_PriceTrackerStatePayloadCopyWith<$Res>
       __$$_PriceTrackerStatePayloadCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Stream<MarketSymbol>? symbols, Stream<SymbolTick>? ticks, String error});
+  $Res call({MarketSymbol? symbols, SymbolTick? ticks, String error});
+
+  @override
+  $MarketSymbolCopyWith<$Res>? get symbols;
+  @override
+  $SymbolTickCopyWith<$Res>? get ticks;
 }
 
 /// @nodoc
@@ -828,11 +1325,11 @@ class __$$_PriceTrackerStatePayloadCopyWithImpl<$Res>
       symbols: freezed == symbols
           ? _value.symbols
           : symbols // ignore: cast_nullable_to_non_nullable
-              as Stream<MarketSymbol>?,
+              as MarketSymbol?,
       ticks: freezed == ticks
           ? _value.ticks
           : ticks // ignore: cast_nullable_to_non_nullable
-              as Stream<SymbolTick>?,
+              as SymbolTick?,
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -843,20 +1340,32 @@ class __$$_PriceTrackerStatePayloadCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PriceTrackerStatePayload implements _PriceTrackerStatePayload {
+class _$_PriceTrackerStatePayload
+    with DiagnosticableTreeMixin
+    implements _PriceTrackerStatePayload {
   const _$_PriceTrackerStatePayload(
       {required this.symbols, required this.ticks, required this.error});
 
   @override
-  final Stream<MarketSymbol>? symbols;
+  final MarketSymbol? symbols;
   @override
-  final Stream<SymbolTick>? ticks;
+  final SymbolTick? ticks;
   @override
   final String error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'PriceTrackerStatePayload(symbols: $symbols, ticks: $ticks, error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PriceTrackerStatePayload'))
+      ..add(DiagnosticsProperty('symbols', symbols))
+      ..add(DiagnosticsProperty('ticks', ticks))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override
@@ -882,14 +1391,14 @@ class _$_PriceTrackerStatePayload implements _PriceTrackerStatePayload {
 
 abstract class _PriceTrackerStatePayload implements PriceTrackerStatePayload {
   const factory _PriceTrackerStatePayload(
-      {required final Stream<MarketSymbol>? symbols,
-      required final Stream<SymbolTick>? ticks,
+      {required final MarketSymbol? symbols,
+      required final SymbolTick? ticks,
       required final String error}) = _$_PriceTrackerStatePayload;
 
   @override
-  Stream<MarketSymbol>? get symbols;
+  MarketSymbol? get symbols;
   @override
-  Stream<SymbolTick>? get ticks;
+  SymbolTick? get ticks;
   @override
   String get error;
   @override

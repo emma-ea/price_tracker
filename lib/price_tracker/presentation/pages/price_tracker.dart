@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:price_tracker/core/logging_utils.dart';
 import 'package:price_tracker/price_tracker/presentation/state/price_tracker_cubit.dart';
+import 'package:price_tracker/price_tracker/presentation/widgets/loading_indicator.dart';
 
 class PriceTracker extends StatefulWidget {
   const PriceTracker({super.key});
@@ -19,8 +20,8 @@ class _PriceTrackerState extends State<PriceTracker> {
   @override
   void initState() {
     super.initState();
-    context.read<PriceTrackerCubit>().getMarketSymbols();
-    context.read<PriceTrackerCubit>().getSymbolTicks("frxAUDCAD");
+    // context.read<PriceTrackerCubit>().getMarketSymbols();
+    // context.read<PriceTrackerCubit>().getSymbolTicks("frxAUDCAD");
   }
 
   @override
@@ -32,11 +33,18 @@ class _PriceTrackerState extends State<PriceTracker> {
       builder: (context, state) =>
         state.maybeWhen(
           loading: (_) {
-            return const Center(child: CircularProgressIndicator(),);
+            return const LoadingIndicator();
           },
           loaded: (payload) {
-            logger.i(payload.symbols);
-            logger.i(payload.ticks);
+            if (payload.symbols != null) {
+              final symbols = payload.symbols!.activeSymbols;
+              logger.i(symbols);
+            }
+
+            if (payload.ticks != null) {
+
+            }
+
             return SafeArea(
               child: Scaffold(
                 body: Column(
