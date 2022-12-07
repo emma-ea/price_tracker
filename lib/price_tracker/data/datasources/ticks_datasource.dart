@@ -18,7 +18,7 @@ class SymbolsTickDatasourceImpl extends SymbolsTickDatasource {
   @override
   void dispose() {
     final params = {"forget_all": "ticks"};
-    _networkService.request(Endpoints.forget, params: params);
+    _networkService.request(params: params);
     
   }
 
@@ -28,7 +28,7 @@ class SymbolsTickDatasourceImpl extends SymbolsTickDatasource {
       "ticks": symbol,
       "subscribe": "1"
     };
-    final channel = _networkService.request(Endpoints.ticks, params: params);
+    final channel = _networkService.request(params: params);
     
     return channel.stream.map((event) => SymbolTick.fromJson(jsonDecode(event)));
   }

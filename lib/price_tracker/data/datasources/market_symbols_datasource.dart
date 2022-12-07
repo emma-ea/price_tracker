@@ -18,7 +18,7 @@ class MarketSymbolsDatasourceImpl extends MarketSymbolsDatasource {
   @override
   void dispose() {
     final params = {"forget_all": "ticks"};
-    _networkService.request(Endpoints.forget, params: params);
+    _networkService.request(params: params);
   }
 
   @override
@@ -27,7 +27,7 @@ class MarketSymbolsDatasourceImpl extends MarketSymbolsDatasource {
       "active_symbols": "brief",
       "product_type": "basic"
     };
-    final channel = _networkService.request(Endpoints.activeSymbols, params: params);
+    final channel = _networkService.request(params: params);
     
     return channel.stream.map((event) => MarketSymbol.fromJson(jsonDecode(event)));
   }

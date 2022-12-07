@@ -9,10 +9,7 @@ import 'package:web_socket_channel/io.dart';
 class NetworkServiceImpl extends NetworkService {
 
   @override
-  IOWebSocketChannel request(
-    String endpoint, {
-    Map<String, dynamic>? params
-  }) {
+  IOWebSocketChannel request({Map<String, dynamic>? params}) {
     final uri = Uri.parse(api(priceTrackerAppId));
     final channel = IOWebSocketChannel.connect(uri);
     channel.sink.add(jsonEncode(params));
