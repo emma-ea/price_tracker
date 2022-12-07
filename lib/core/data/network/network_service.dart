@@ -1,5 +1,7 @@
+import 'package:web_socket_channel/io.dart';
+
 abstract class NetworkService {
 
-  Future<Stream<dynamic>> request(String endpoint, {Map<String, dynamic> params});
+  IOWebSocketChannel request(String endpoint, {Map<String, dynamic> params});
 
 }

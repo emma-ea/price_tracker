@@ -7,7 +7,7 @@ import 'package:price_tracker/price_tracker/data/datasources/endpoints.dart';
 import 'package:price_tracker/price_tracker/data/models/symbol_ticks.dart';
 
 abstract class SymbolsTickDatasource implements RemoteDatasource {
-  Future<SymbolTick> getSymbolTick(String symbol);
+  Stream<SymbolTick> getSymbolTick(String symbol);
 }
 
 class SymbolsTickDatasourceImpl extends SymbolsTickDatasource {
@@ -27,16 +27,14 @@ class SymbolsTickDatasourceImpl extends SymbolsTickDatasource {
   }
 
   @override
-  Future<SymbolTick> getSymbolTick(String symbol) {
+  Stream<SymbolTick> getSymbolTick(String symbol) {
     final params = {
       "ticks": symbol,
       "subscribe": "1"
     };
     final channel = _networkService.request(Endpoints.ticks, params: params);
-    channel.asStream().listen((event) {
-      logger.i(event);
-     });
-    return Future.value(SymbolTick("", "", ""));
+    
+    return channel.stream.map((event) => SymbolTick.fromJson(event));
   }
 
 }

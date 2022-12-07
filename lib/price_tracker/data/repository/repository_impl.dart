@@ -12,12 +12,12 @@ class RepositoryImpl extends Repository {
   RepositoryImpl(this._marketSymbolsDatasource, this._symbolsTickDatasource);
 
   @override
-  Future<List<MarketSymbol>> getMarketSymbols() {
+  Stream<MarketSymbol> getMarketSymbols() {
     return _marketSymbolsDatasource.getMarketSymbols();
   }
 
   @override
-  Future<SymbolTick> getSymbolTick(String symbol) {
+  Stream<SymbolTick> getSymbolTick(String symbol) {
     return _symbolsTickDatasource.getSymbolTick(symbol);
   }
   

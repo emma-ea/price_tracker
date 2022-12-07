@@ -8,7 +8,7 @@ import 'package:price_tracker/price_tracker/data/datasources/endpoints.dart';
 import 'package:price_tracker/price_tracker/data/models/market_symbols.dart';
 
 abstract class MarketSymbolsDatasource implements RemoteDatasource {
-  Future<List<MarketSymbol>> getMarketSymbols();
+  Stream<MarketSymbol> getMarketSymbols();
 }
 
 class MarketSymbolsDatasourceImpl extends MarketSymbolsDatasource {
@@ -28,17 +28,14 @@ class MarketSymbolsDatasourceImpl extends MarketSymbolsDatasource {
   }
 
   @override
-  Future<List<MarketSymbol>> getMarketSymbols() async {
+  Stream<MarketSymbol> getMarketSymbols() {
     final params = {
       "active_symbols": "brief",
       "product_type": "basic"
     };
     final channel = _networkService.request(Endpoints.activeSymbols, params: params);
-    channel.asStream().listen((event) { 
-      // _streamController.add(jsonDecode(event) as List<MarketSymbol>);
-      logger.i(event);
-    });
-    return List<MarketSymbol>.empty();
+    
+    return channel.stream.map((event) => MarketSymbol.fromJson(event));
   }
   
 }

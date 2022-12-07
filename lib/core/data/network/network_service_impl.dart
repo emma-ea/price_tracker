@@ -9,14 +9,14 @@ import 'package:web_socket_channel/io.dart';
 class NetworkServiceImpl extends NetworkService {
 
   @override
-  Future<Stream<dynamic>> request(
+  IOWebSocketChannel request(
     String endpoint, {
     Map<String, dynamic>? params
-  }) async {
+  }) {
     final uri = Uri.parse(api(appId));
     final channel = IOWebSocketChannel.connect(uri);
     channel.sink.add(jsonEncode(params));
 
-    return channel.stream;
+    return channel;
   }
 }
