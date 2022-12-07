@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:price_tracker/core/failures.dart';
 
-abstract class Usease<Type, Params> {
+abstract class Usecase<Type, Params> {
   Future<Either<UIError, Type>> call([params]);
 }
 
