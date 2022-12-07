@@ -205,11 +205,11 @@ Ticks _$TicksFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Ticks {
   @JsonKey(name: 'ask')
-  int? get ask => throw _privateConstructorUsedError;
+  double? get ask => throw _privateConstructorUsedError;
   @JsonKey(name: 'bid')
-  int? get bid => throw _privateConstructorUsedError;
-  @JsonKey(name: 'quota')
-  int? get quota => throw _privateConstructorUsedError;
+  double? get bid => throw _privateConstructorUsedError;
+  @JsonKey(name: 'quote')
+  double? get quote => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -222,9 +222,9 @@ abstract class $TicksCopyWith<$Res> {
       _$TicksCopyWithImpl<$Res, Ticks>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'ask') int? ask,
-      @JsonKey(name: 'bid') int? bid,
-      @JsonKey(name: 'quota') int? quota});
+      {@JsonKey(name: 'ask') double? ask,
+      @JsonKey(name: 'bid') double? bid,
+      @JsonKey(name: 'quote') double? quote});
 }
 
 /// @nodoc
@@ -242,21 +242,21 @@ class _$TicksCopyWithImpl<$Res, $Val extends Ticks>
   $Res call({
     Object? ask = freezed,
     Object? bid = freezed,
-    Object? quota = freezed,
+    Object? quote = freezed,
   }) {
     return _then(_value.copyWith(
       ask: freezed == ask
           ? _value.ask
           : ask // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       bid: freezed == bid
           ? _value.bid
           : bid // ignore: cast_nullable_to_non_nullable
-              as int?,
-      quota: freezed == quota
-          ? _value.quota
-          : quota // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
+      quote: freezed == quote
+          ? _value.quote
+          : quote // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 }
@@ -268,9 +268,9 @@ abstract class _$$_TicksCopyWith<$Res> implements $TicksCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'ask') int? ask,
-      @JsonKey(name: 'bid') int? bid,
-      @JsonKey(name: 'quota') int? quota});
+      {@JsonKey(name: 'ask') double? ask,
+      @JsonKey(name: 'bid') double? bid,
+      @JsonKey(name: 'quote') double? quote});
 }
 
 /// @nodoc
@@ -284,21 +284,21 @@ class __$$_TicksCopyWithImpl<$Res> extends _$TicksCopyWithImpl<$Res, _$_Ticks>
   $Res call({
     Object? ask = freezed,
     Object? bid = freezed,
-    Object? quota = freezed,
+    Object? quote = freezed,
   }) {
     return _then(_$_Ticks(
       ask: freezed == ask
           ? _value.ask
           : ask // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       bid: freezed == bid
           ? _value.bid
           : bid // ignore: cast_nullable_to_non_nullable
-              as int?,
-      quota: freezed == quota
-          ? _value.quota
-          : quota // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
+      quote: freezed == quote
+          ? _value.quote
+          : quote // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -309,24 +309,24 @@ class _$_Ticks implements _Ticks {
   const _$_Ticks(
       {@JsonKey(name: 'ask') required this.ask,
       @JsonKey(name: 'bid') required this.bid,
-      @JsonKey(name: 'quota') required this.quota});
+      @JsonKey(name: 'quote') required this.quote});
 
   factory _$_Ticks.fromJson(Map<String, dynamic> json) =>
       _$$_TicksFromJson(json);
 
   @override
   @JsonKey(name: 'ask')
-  final int? ask;
+  final double? ask;
   @override
   @JsonKey(name: 'bid')
-  final int? bid;
+  final double? bid;
   @override
-  @JsonKey(name: 'quota')
-  final int? quota;
+  @JsonKey(name: 'quote')
+  final double? quote;
 
   @override
   String toString() {
-    return 'Ticks(ask: $ask, bid: $bid, quota: $quota)';
+    return 'Ticks(ask: $ask, bid: $bid, quote: $quote)';
   }
 
   @override
@@ -336,12 +336,12 @@ class _$_Ticks implements _Ticks {
             other is _$_Ticks &&
             (identical(other.ask, ask) || other.ask == ask) &&
             (identical(other.bid, bid) || other.bid == bid) &&
-            (identical(other.quota, quota) || other.quota == quota));
+            (identical(other.quote, quote) || other.quote == quote));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, ask, bid, quota);
+  int get hashCode => Object.hash(runtimeType, ask, bid, quote);
 
   @JsonKey(ignore: true)
   @override
@@ -359,21 +359,21 @@ class _$_Ticks implements _Ticks {
 
 abstract class _Ticks implements Ticks {
   const factory _Ticks(
-      {@JsonKey(name: 'ask') required final int? ask,
-      @JsonKey(name: 'bid') required final int? bid,
-      @JsonKey(name: 'quota') required final int? quota}) = _$_Ticks;
+      {@JsonKey(name: 'ask') required final double? ask,
+      @JsonKey(name: 'bid') required final double? bid,
+      @JsonKey(name: 'quote') required final double? quote}) = _$_Ticks;
 
   factory _Ticks.fromJson(Map<String, dynamic> json) = _$_Ticks.fromJson;
 
   @override
   @JsonKey(name: 'ask')
-  int? get ask;
+  double? get ask;
   @override
   @JsonKey(name: 'bid')
-  int? get bid;
+  double? get bid;
   @override
-  @JsonKey(name: 'quota')
-  int? get quota;
+  @JsonKey(name: 'quote')
+  double? get quote;
   @override
   @JsonKey(ignore: true)
   _$$_TicksCopyWith<_$_Ticks> get copyWith =>

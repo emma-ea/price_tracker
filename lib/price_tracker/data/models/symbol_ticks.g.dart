@@ -21,13 +21,13 @@ Map<String, dynamic> _$$_SymbolTickToJson(_$_SymbolTick instance) =>
     };
 
 _$_Ticks _$$_TicksFromJson(Map<String, dynamic> json) => _$_Ticks(
-      ask: json['ask'] as int?,
-      bid: json['bid'] as int?,
-      quota: json['quota'] as int?,
+      ask: (json['ask'] as num?)?.toDouble(),
+      bid: (json['bid'] as num?)?.toDouble(),
+      quote: (json['quote'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$_TicksToJson(_$_Ticks instance) => <String, dynamic>{
       'ask': instance.ask,
       'bid': instance.bid,
-      'quota': instance.quota,
+      'quote': instance.quote,
     };

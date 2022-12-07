@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:price_tracker/core/data/datasources/remote_datasource_base.dart';
 import 'package:price_tracker/core/data/network/network_service.dart';
@@ -29,7 +30,7 @@ class SymbolsTickDatasourceImpl extends SymbolsTickDatasource {
     };
     final channel = _networkService.request(Endpoints.ticks, params: params);
     
-    return channel.stream.map((event) => SymbolTick.fromJson(event));
+    return channel.stream.map((event) => SymbolTick.fromJson(jsonDecode(event)));
   }
 
 }

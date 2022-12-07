@@ -23,11 +23,11 @@ abstract class Ticks with _$Ticks {
 
   const factory Ticks({
     @JsonKey(name: 'ask')
-    required int? ask,
+    required double? ask,
     @JsonKey(name: 'bid')
-    required int? bid,
-    @JsonKey(name: 'quota')
-    required int? quota
+    required double? bid,
+    @JsonKey(name: 'quote')
+    required double? quote
   }) = _Ticks;
 
   factory Ticks.fromJson(Map json) => 
