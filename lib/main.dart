@@ -5,6 +5,7 @@ import 'package:price_tracker/core/di/configure_injectors.dart';
 import 'package:price_tracker/price_tracker/domain/di/price_tracker_module_injector.dart';
 import 'package:price_tracker/price_tracker/domain/usecases/available_market_symbol.dart';
 import 'package:price_tracker/price_tracker/domain/usecases/available_symbol_ticks.dart';
+import 'package:price_tracker/price_tracker/domain/usecases/dispose_connection.dart';
 import 'package:price_tracker/price_tracker/presentation/pages/price_tracker.dart';
 import 'package:price_tracker/price_tracker/presentation/state/price_tracker_cubit.dart';
 
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => PriceTrackerCubit(
         PriceTrackerModuleInjector.resolve<AvailableSymbols>(),
-        PriceTrackerModuleInjector.resolve<AvailableTicks>()
+        PriceTrackerModuleInjector.resolve<AvailableTicks>(),
+        PriceTrackerModuleInjector.resolve<DisposeConnection>()
       ),
       child: const MaterialApp(
         title: 'Price Tracker',

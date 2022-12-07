@@ -1,5 +1,5 @@
 abstract class NetworkService {
 
-  Future<Map<String, dynamic>> listen(String endpoint, {Map<String, dynamic> headers});
+  Future<Stream<dynamic>> request(String endpoint, {Map<String, dynamic> params});
 
 }

@@ -16,6 +16,7 @@ class _PriceTrackerState extends State<PriceTracker> {
   void initState() {
     super.initState();
     context.read<PriceTrackerCubit>().getMarketSymbols();
+    context.read<PriceTrackerCubit>().getSymbolTicks("frxAUDCAD");
   }
 
   @override
@@ -25,7 +26,17 @@ class _PriceTrackerState extends State<PriceTracker> {
       builder: (context, state) {
         return SafeArea(
           child: Scaffold(
-            body: Center(child: Text("price tracker")),
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Center(child: Text("price tracker")),
+                const SizedBox(height: 40.0,),
+                TextButton(
+                  onPressed: () => context.read<PriceTrackerCubit>().disposeConnection(), 
+                  child: const Text("Reset connection")
+                )
+              ],
+            ),
           ),
         );
       }

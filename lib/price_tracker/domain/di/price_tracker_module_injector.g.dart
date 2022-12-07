@@ -18,6 +18,7 @@ class _$PriceTrackerModuleInjector extends PriceTrackerModuleInjector {
       ..registerFactory<SymbolsTickDatasource>(
           (c) => SymbolsTickDatasourceImpl(c<NetworkService>()))
       ..registerSingleton((c) => AvailableSymbols(c<Repository>()))
-      ..registerSingleton((c) => AvailableTicks(c<Repository>()));
+      ..registerSingleton((c) => AvailableTicks(c<Repository>()))
+      ..registerSingleton((c) => DisposeConnection(c<Repository>()));
   }
 }
