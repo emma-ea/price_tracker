@@ -18,6 +18,9 @@ abstract class PriceTrackerState with _$PriceTrackerState {
   const factory PriceTrackerState.ticksLoaded({required PriceTrackerStatePayload payload}) = 
     _TicksLoadedPriceTrackerState; 
 
+  const factory PriceTrackerState.ticksLoading({required PriceTrackerStatePayload payload}) = 
+    _TicksLoadingPriceTrackerState; 
+
   const factory PriceTrackerState.error({required PriceTrackerStatePayload payload}) = 
    _ErrorPriceTrackerState;
 

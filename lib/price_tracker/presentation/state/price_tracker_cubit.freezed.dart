@@ -24,6 +24,7 @@ mixin _$PriceTrackerState {
     required TResult Function(PriceTrackerStatePayload payload) loaded,
     required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
     required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoading,
     required TResult Function(PriceTrackerStatePayload payload) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,6 +35,7 @@ mixin _$PriceTrackerState {
     TResult? Function(PriceTrackerStatePayload payload)? loaded,
     TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult? Function(PriceTrackerStatePayload payload)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +46,7 @@ mixin _$PriceTrackerState {
     TResult Function(PriceTrackerStatePayload payload)? loaded,
     TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult Function(PriceTrackerStatePayload payload)? error,
     required TResult orElse(),
   }) =>
@@ -56,6 +59,8 @@ mixin _$PriceTrackerState {
     required TResult Function(_SymbolsLoadedPriceTrackerState value)
         symbolsLoaded,
     required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
+    required TResult Function(_TicksLoadingPriceTrackerState value)
+        ticksLoading,
     required TResult Function(_ErrorPriceTrackerState value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -66,6 +71,7 @@ mixin _$PriceTrackerState {
     TResult? Function(_LoadedPriceTrackerState value)? loaded,
     TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult? Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult? Function(_ErrorPriceTrackerState value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -76,6 +82,7 @@ mixin _$PriceTrackerState {
     TResult Function(_LoadedPriceTrackerState value)? loaded,
     TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult Function(_ErrorPriceTrackerState value)? error,
     required TResult orElse(),
   }) =>
@@ -215,6 +222,7 @@ class _$_InitialPriceTrackerState
     required TResult Function(PriceTrackerStatePayload payload) loaded,
     required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
     required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoading,
     required TResult Function(PriceTrackerStatePayload payload) error,
   }) {
     return initial(payload);
@@ -228,6 +236,7 @@ class _$_InitialPriceTrackerState
     TResult? Function(PriceTrackerStatePayload payload)? loaded,
     TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult? Function(PriceTrackerStatePayload payload)? error,
   }) {
     return initial?.call(payload);
@@ -241,6 +250,7 @@ class _$_InitialPriceTrackerState
     TResult Function(PriceTrackerStatePayload payload)? loaded,
     TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult Function(PriceTrackerStatePayload payload)? error,
     required TResult orElse(),
   }) {
@@ -259,6 +269,8 @@ class _$_InitialPriceTrackerState
     required TResult Function(_SymbolsLoadedPriceTrackerState value)
         symbolsLoaded,
     required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
+    required TResult Function(_TicksLoadingPriceTrackerState value)
+        ticksLoading,
     required TResult Function(_ErrorPriceTrackerState value) error,
   }) {
     return initial(this);
@@ -272,6 +284,7 @@ class _$_InitialPriceTrackerState
     TResult? Function(_LoadedPriceTrackerState value)? loaded,
     TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult? Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult? Function(_ErrorPriceTrackerState value)? error,
   }) {
     return initial?.call(this);
@@ -285,6 +298,7 @@ class _$_InitialPriceTrackerState
     TResult Function(_LoadedPriceTrackerState value)? loaded,
     TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult Function(_ErrorPriceTrackerState value)? error,
     required TResult orElse(),
   }) {
@@ -394,6 +408,7 @@ class _$_LoadingPriceTrackerState
     required TResult Function(PriceTrackerStatePayload payload) loaded,
     required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
     required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoading,
     required TResult Function(PriceTrackerStatePayload payload) error,
   }) {
     return loading(payload);
@@ -407,6 +422,7 @@ class _$_LoadingPriceTrackerState
     TResult? Function(PriceTrackerStatePayload payload)? loaded,
     TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult? Function(PriceTrackerStatePayload payload)? error,
   }) {
     return loading?.call(payload);
@@ -420,6 +436,7 @@ class _$_LoadingPriceTrackerState
     TResult Function(PriceTrackerStatePayload payload)? loaded,
     TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult Function(PriceTrackerStatePayload payload)? error,
     required TResult orElse(),
   }) {
@@ -438,6 +455,8 @@ class _$_LoadingPriceTrackerState
     required TResult Function(_SymbolsLoadedPriceTrackerState value)
         symbolsLoaded,
     required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
+    required TResult Function(_TicksLoadingPriceTrackerState value)
+        ticksLoading,
     required TResult Function(_ErrorPriceTrackerState value) error,
   }) {
     return loading(this);
@@ -451,6 +470,7 @@ class _$_LoadingPriceTrackerState
     TResult? Function(_LoadedPriceTrackerState value)? loaded,
     TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult? Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult? Function(_ErrorPriceTrackerState value)? error,
   }) {
     return loading?.call(this);
@@ -464,6 +484,7 @@ class _$_LoadingPriceTrackerState
     TResult Function(_LoadedPriceTrackerState value)? loaded,
     TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult Function(_ErrorPriceTrackerState value)? error,
     required TResult orElse(),
   }) {
@@ -573,6 +594,7 @@ class _$_LoadedPriceTrackerState
     required TResult Function(PriceTrackerStatePayload payload) loaded,
     required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
     required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoading,
     required TResult Function(PriceTrackerStatePayload payload) error,
   }) {
     return loaded(payload);
@@ -586,6 +608,7 @@ class _$_LoadedPriceTrackerState
     TResult? Function(PriceTrackerStatePayload payload)? loaded,
     TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult? Function(PriceTrackerStatePayload payload)? error,
   }) {
     return loaded?.call(payload);
@@ -599,6 +622,7 @@ class _$_LoadedPriceTrackerState
     TResult Function(PriceTrackerStatePayload payload)? loaded,
     TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult Function(PriceTrackerStatePayload payload)? error,
     required TResult orElse(),
   }) {
@@ -617,6 +641,8 @@ class _$_LoadedPriceTrackerState
     required TResult Function(_SymbolsLoadedPriceTrackerState value)
         symbolsLoaded,
     required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
+    required TResult Function(_TicksLoadingPriceTrackerState value)
+        ticksLoading,
     required TResult Function(_ErrorPriceTrackerState value) error,
   }) {
     return loaded(this);
@@ -630,6 +656,7 @@ class _$_LoadedPriceTrackerState
     TResult? Function(_LoadedPriceTrackerState value)? loaded,
     TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult? Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult? Function(_ErrorPriceTrackerState value)? error,
   }) {
     return loaded?.call(this);
@@ -643,6 +670,7 @@ class _$_LoadedPriceTrackerState
     TResult Function(_LoadedPriceTrackerState value)? loaded,
     TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult Function(_ErrorPriceTrackerState value)? error,
     required TResult orElse(),
   }) {
@@ -754,6 +782,7 @@ class _$_SymbolsLoadedPriceTrackerState
     required TResult Function(PriceTrackerStatePayload payload) loaded,
     required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
     required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoading,
     required TResult Function(PriceTrackerStatePayload payload) error,
   }) {
     return symbolsLoaded(payload);
@@ -767,6 +796,7 @@ class _$_SymbolsLoadedPriceTrackerState
     TResult? Function(PriceTrackerStatePayload payload)? loaded,
     TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult? Function(PriceTrackerStatePayload payload)? error,
   }) {
     return symbolsLoaded?.call(payload);
@@ -780,6 +810,7 @@ class _$_SymbolsLoadedPriceTrackerState
     TResult Function(PriceTrackerStatePayload payload)? loaded,
     TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult Function(PriceTrackerStatePayload payload)? error,
     required TResult orElse(),
   }) {
@@ -798,6 +829,8 @@ class _$_SymbolsLoadedPriceTrackerState
     required TResult Function(_SymbolsLoadedPriceTrackerState value)
         symbolsLoaded,
     required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
+    required TResult Function(_TicksLoadingPriceTrackerState value)
+        ticksLoading,
     required TResult Function(_ErrorPriceTrackerState value) error,
   }) {
     return symbolsLoaded(this);
@@ -811,6 +844,7 @@ class _$_SymbolsLoadedPriceTrackerState
     TResult? Function(_LoadedPriceTrackerState value)? loaded,
     TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult? Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult? Function(_ErrorPriceTrackerState value)? error,
   }) {
     return symbolsLoaded?.call(this);
@@ -824,6 +858,7 @@ class _$_SymbolsLoadedPriceTrackerState
     TResult Function(_LoadedPriceTrackerState value)? loaded,
     TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult Function(_ErrorPriceTrackerState value)? error,
     required TResult orElse(),
   }) {
@@ -935,6 +970,7 @@ class _$_TicksLoadedPriceTrackerState
     required TResult Function(PriceTrackerStatePayload payload) loaded,
     required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
     required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoading,
     required TResult Function(PriceTrackerStatePayload payload) error,
   }) {
     return ticksLoaded(payload);
@@ -948,6 +984,7 @@ class _$_TicksLoadedPriceTrackerState
     TResult? Function(PriceTrackerStatePayload payload)? loaded,
     TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult? Function(PriceTrackerStatePayload payload)? error,
   }) {
     return ticksLoaded?.call(payload);
@@ -961,6 +998,7 @@ class _$_TicksLoadedPriceTrackerState
     TResult Function(PriceTrackerStatePayload payload)? loaded,
     TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult Function(PriceTrackerStatePayload payload)? error,
     required TResult orElse(),
   }) {
@@ -979,6 +1017,8 @@ class _$_TicksLoadedPriceTrackerState
     required TResult Function(_SymbolsLoadedPriceTrackerState value)
         symbolsLoaded,
     required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
+    required TResult Function(_TicksLoadingPriceTrackerState value)
+        ticksLoading,
     required TResult Function(_ErrorPriceTrackerState value) error,
   }) {
     return ticksLoaded(this);
@@ -992,6 +1032,7 @@ class _$_TicksLoadedPriceTrackerState
     TResult? Function(_LoadedPriceTrackerState value)? loaded,
     TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult? Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult? Function(_ErrorPriceTrackerState value)? error,
   }) {
     return ticksLoaded?.call(this);
@@ -1005,6 +1046,7 @@ class _$_TicksLoadedPriceTrackerState
     TResult Function(_LoadedPriceTrackerState value)? loaded,
     TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult Function(_ErrorPriceTrackerState value)? error,
     required TResult orElse(),
   }) {
@@ -1025,6 +1067,194 @@ abstract class _TicksLoadedPriceTrackerState implements PriceTrackerState {
   @override
   @JsonKey(ignore: true)
   _$$_TicksLoadedPriceTrackerStateCopyWith<_$_TicksLoadedPriceTrackerState>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_TicksLoadingPriceTrackerStateCopyWith<$Res>
+    implements $PriceTrackerStateCopyWith<$Res> {
+  factory _$$_TicksLoadingPriceTrackerStateCopyWith(
+          _$_TicksLoadingPriceTrackerState value,
+          $Res Function(_$_TicksLoadingPriceTrackerState) then) =
+      __$$_TicksLoadingPriceTrackerStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({PriceTrackerStatePayload payload});
+
+  @override
+  $PriceTrackerStatePayloadCopyWith<$Res> get payload;
+}
+
+/// @nodoc
+class __$$_TicksLoadingPriceTrackerStateCopyWithImpl<$Res>
+    extends _$PriceTrackerStateCopyWithImpl<$Res,
+        _$_TicksLoadingPriceTrackerState>
+    implements _$$_TicksLoadingPriceTrackerStateCopyWith<$Res> {
+  __$$_TicksLoadingPriceTrackerStateCopyWithImpl(
+      _$_TicksLoadingPriceTrackerState _value,
+      $Res Function(_$_TicksLoadingPriceTrackerState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? payload = null,
+  }) {
+    return _then(_$_TicksLoadingPriceTrackerState(
+      payload: null == payload
+          ? _value.payload
+          : payload // ignore: cast_nullable_to_non_nullable
+              as PriceTrackerStatePayload,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_TicksLoadingPriceTrackerState
+    with DiagnosticableTreeMixin
+    implements _TicksLoadingPriceTrackerState {
+  const _$_TicksLoadingPriceTrackerState({required this.payload});
+
+  @override
+  final PriceTrackerStatePayload payload;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'PriceTrackerState.ticksLoading(payload: $payload)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'PriceTrackerState.ticksLoading'))
+      ..add(DiagnosticsProperty('payload', payload));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TicksLoadingPriceTrackerState &&
+            (identical(other.payload, payload) || other.payload == payload));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, payload);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TicksLoadingPriceTrackerStateCopyWith<_$_TicksLoadingPriceTrackerState>
+      get copyWith => __$$_TicksLoadingPriceTrackerStateCopyWithImpl<
+          _$_TicksLoadingPriceTrackerState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(PriceTrackerStatePayload payload) initial,
+    required TResult Function(PriceTrackerStatePayload payload) loading,
+    required TResult Function(PriceTrackerStatePayload payload) loaded,
+    required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoading,
+    required TResult Function(PriceTrackerStatePayload payload) error,
+  }) {
+    return ticksLoading(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(PriceTrackerStatePayload payload)? initial,
+    TResult? Function(PriceTrackerStatePayload payload)? loading,
+    TResult? Function(PriceTrackerStatePayload payload)? loaded,
+    TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoading,
+    TResult? Function(PriceTrackerStatePayload payload)? error,
+  }) {
+    return ticksLoading?.call(payload);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(PriceTrackerStatePayload payload)? initial,
+    TResult Function(PriceTrackerStatePayload payload)? loading,
+    TResult Function(PriceTrackerStatePayload payload)? loaded,
+    TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoading,
+    TResult Function(PriceTrackerStatePayload payload)? error,
+    required TResult orElse(),
+  }) {
+    if (ticksLoading != null) {
+      return ticksLoading(payload);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialPriceTrackerState value) initial,
+    required TResult Function(_LoadingPriceTrackerState value) loading,
+    required TResult Function(_LoadedPriceTrackerState value) loaded,
+    required TResult Function(_SymbolsLoadedPriceTrackerState value)
+        symbolsLoaded,
+    required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
+    required TResult Function(_TicksLoadingPriceTrackerState value)
+        ticksLoading,
+    required TResult Function(_ErrorPriceTrackerState value) error,
+  }) {
+    return ticksLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialPriceTrackerState value)? initial,
+    TResult? Function(_LoadingPriceTrackerState value)? loading,
+    TResult? Function(_LoadedPriceTrackerState value)? loaded,
+    TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult? Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
+    TResult? Function(_ErrorPriceTrackerState value)? error,
+  }) {
+    return ticksLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialPriceTrackerState value)? initial,
+    TResult Function(_LoadingPriceTrackerState value)? loading,
+    TResult Function(_LoadedPriceTrackerState value)? loaded,
+    TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
+    TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
+    TResult Function(_ErrorPriceTrackerState value)? error,
+    required TResult orElse(),
+  }) {
+    if (ticksLoading != null) {
+      return ticksLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TicksLoadingPriceTrackerState implements PriceTrackerState {
+  const factory _TicksLoadingPriceTrackerState(
+          {required final PriceTrackerStatePayload payload}) =
+      _$_TicksLoadingPriceTrackerState;
+
+  @override
+  PriceTrackerStatePayload get payload;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TicksLoadingPriceTrackerStateCopyWith<_$_TicksLoadingPriceTrackerState>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -1113,6 +1343,7 @@ class _$_ErrorPriceTrackerState
     required TResult Function(PriceTrackerStatePayload payload) loaded,
     required TResult Function(PriceTrackerStatePayload payload) symbolsLoaded,
     required TResult Function(PriceTrackerStatePayload payload) ticksLoaded,
+    required TResult Function(PriceTrackerStatePayload payload) ticksLoading,
     required TResult Function(PriceTrackerStatePayload payload) error,
   }) {
     return error(payload);
@@ -1126,6 +1357,7 @@ class _$_ErrorPriceTrackerState
     TResult? Function(PriceTrackerStatePayload payload)? loaded,
     TResult? Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult? Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult? Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult? Function(PriceTrackerStatePayload payload)? error,
   }) {
     return error?.call(payload);
@@ -1139,6 +1371,7 @@ class _$_ErrorPriceTrackerState
     TResult Function(PriceTrackerStatePayload payload)? loaded,
     TResult Function(PriceTrackerStatePayload payload)? symbolsLoaded,
     TResult Function(PriceTrackerStatePayload payload)? ticksLoaded,
+    TResult Function(PriceTrackerStatePayload payload)? ticksLoading,
     TResult Function(PriceTrackerStatePayload payload)? error,
     required TResult orElse(),
   }) {
@@ -1157,6 +1390,8 @@ class _$_ErrorPriceTrackerState
     required TResult Function(_SymbolsLoadedPriceTrackerState value)
         symbolsLoaded,
     required TResult Function(_TicksLoadedPriceTrackerState value) ticksLoaded,
+    required TResult Function(_TicksLoadingPriceTrackerState value)
+        ticksLoading,
     required TResult Function(_ErrorPriceTrackerState value) error,
   }) {
     return error(this);
@@ -1170,6 +1405,7 @@ class _$_ErrorPriceTrackerState
     TResult? Function(_LoadedPriceTrackerState value)? loaded,
     TResult? Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult? Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult? Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult? Function(_ErrorPriceTrackerState value)? error,
   }) {
     return error?.call(this);
@@ -1183,6 +1419,7 @@ class _$_ErrorPriceTrackerState
     TResult Function(_LoadedPriceTrackerState value)? loaded,
     TResult Function(_SymbolsLoadedPriceTrackerState value)? symbolsLoaded,
     TResult Function(_TicksLoadedPriceTrackerState value)? ticksLoaded,
+    TResult Function(_TicksLoadingPriceTrackerState value)? ticksLoading,
     TResult Function(_ErrorPriceTrackerState value)? error,
     required TResult orElse(),
   }) {

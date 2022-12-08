@@ -45,7 +45,7 @@ class PriceTrackerCubit extends Cubit<PriceTrackerState> {
   }
 
   Future<void> getSymbolTicks(String symbol) async {
-    emit(PriceTrackerState.loading(payload: state.payload.copyWith()));
+    emit(PriceTrackerState.ticksLoading(payload: state.payload.copyWith()));
 
     final results = await _symbolTicks(SymbolParams(symbol));
 
