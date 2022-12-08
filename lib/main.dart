@@ -8,6 +8,7 @@ import 'package:price_tracker/price_tracker/domain/usecases/available_symbol_tic
 import 'package:price_tracker/price_tracker/domain/usecases/dispose_connection.dart';
 import 'package:price_tracker/price_tracker/presentation/pages/price_tracker.dart';
 import 'package:price_tracker/price_tracker/presentation/state/price_tracker_cubit.dart';
+import 'package:price_tracker/price_tracker/presentation/widgets/landing_page.dart';
 import 'package:price_tracker/price_tracker/presentation/widgets/loading_indicator.dart';
 
 Future<void> main() async {
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
             state.maybeWhen(
               orElse: (){},
               symbolsLoaded: ((payload) {
-                Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PriceTracker()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const PriceTracker()));
               })
             );
           }),
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
               return Center(child: Text("Something went wrong.\n${payload.error}"),);
             }),
             loading: (payload) => const LoadingIndicator(),
-            symbolsLoaded: ((payload) => Container()
+            symbolsLoaded: ((payload) => const PriceTracker()
           )
         ),
       ),

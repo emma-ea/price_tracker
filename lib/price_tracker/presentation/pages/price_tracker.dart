@@ -144,6 +144,7 @@ class _PriceTrackerState extends State<PriceTracker> {
                           );
                         }).toList().toSet(),
                         onChanged: (asset) {
+                          oldPrice = 0.0;
                           context.read<PriceTrackerCubit>().getSymbolTicks(asset ?? "");
                         }, 
                       ),
