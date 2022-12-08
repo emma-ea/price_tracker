@@ -83,6 +83,7 @@ class _PriceTrackerState extends State<PriceTracker> {
             }
           },
           error: (payload) {
+            loading = false;
             infoDialog(
               context, 
               "Error", 
@@ -136,6 +137,7 @@ class _PriceTrackerState extends State<PriceTracker> {
                           selectedMarket = market;
                           setState(() {
                             filteredMarkets =  markets!.map((e) => e.market!).toSet().toList();
+                            selectedAssetName = null;
                             assets = markets!.toList();
                             assets!.retainWhere((asset) => selectedMarket == asset.market);
                           });
