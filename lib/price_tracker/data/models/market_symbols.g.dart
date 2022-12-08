@@ -24,10 +24,14 @@ _$_ActiveSymbol _$$_ActiveSymbolFromJson(Map<String, dynamic> json) =>
     _$_ActiveSymbol(
       displayName: json['display_name'] as String?,
       symbol: json['symbol'] as String?,
+      market: json['market'] as String?,
+      marketName: json['market_display_name'] as String?,
     );
 
 Map<String, dynamic> _$$_ActiveSymbolToJson(_$_ActiveSymbol instance) =>
     <String, dynamic>{
       'display_name': instance.displayName,
       'symbol': instance.symbol,
+      'market': instance.market,
+      'market_display_name': instance.marketName,
     };

@@ -26,6 +26,10 @@ abstract class ActiveSymbol with _$ActiveSymbol {
     required String? displayName,
     @JsonKey(name: 'symbol')
     required String? symbol,
+    @JsonKey(name: 'market')
+    required String? market,
+    @JsonKey(name: 'market_display_name')
+    required String? marketName
   }) = _ActiveSymbol;
 
   factory ActiveSymbol.fromJson(Map json) => 
