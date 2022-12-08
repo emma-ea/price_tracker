@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:price_tracker/price_tracker/data/models/market_symbols.dart';
 
 class ListDropDown extends StatelessWidget {
 

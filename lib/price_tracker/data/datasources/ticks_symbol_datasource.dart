@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:price_tracker/core/data/datasources/remote_datasource_base.dart';
 import 'package:price_tracker/core/data/network/network_service.dart';
-import 'package:price_tracker/price_tracker/data/datasources/endpoints.dart';
 import 'package:price_tracker/price_tracker/data/models/symbol_ticks.dart';
 
 abstract class TicksSymbolDatasource implements RemoteDatasource {

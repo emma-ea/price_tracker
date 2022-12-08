@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:price_tracker/core/logging_utils.dart';
 import 'package:price_tracker/price_tracker/domain/usecases/available_market_symbol.dart';
 import 'package:price_tracker/price_tracker/domain/usecases/available_symbol_ticks.dart';
 import 'package:price_tracker/price_tracker/domain/usecases/dispose_connection.dart';
