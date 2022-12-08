@@ -12,11 +12,11 @@ class _$PriceTrackerModuleInjector extends PriceTrackerModuleInjector {
     final KiwiContainer container = KiwiContainer();
     container
       ..registerFactory<Repository>((c) => RepositoryImpl(
-          c<MarketSymbolsDatasource>(), c<SymbolsTickDatasource>()))
+          c<MarketSymbolsDatasource>(), c<TicksSymbolDatasource>()))
       ..registerFactory<MarketSymbolsDatasource>(
           (c) => MarketSymbolsDatasourceImpl(c<NetworkService>()))
-      ..registerFactory<SymbolsTickDatasource>(
-          (c) => SymbolsTickDatasourceImpl(c<NetworkService>()))
+      ..registerFactory<TicksSymbolDatasource>(
+          (c) => TicksSymbolDatasourceImpl(c<NetworkService>()))
       ..registerSingleton((c) => AvailableSymbols(c<Repository>()))
       ..registerSingleton((c) => AvailableTicks(c<Repository>()))
       ..registerSingleton((c) => DisposeConnection(c<Repository>()));

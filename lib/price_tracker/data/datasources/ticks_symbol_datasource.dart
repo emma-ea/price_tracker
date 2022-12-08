@@ -6,14 +6,14 @@ import 'package:price_tracker/core/data/network/network_service.dart';
 import 'package:price_tracker/price_tracker/data/datasources/endpoints.dart';
 import 'package:price_tracker/price_tracker/data/models/symbol_ticks.dart';
 
-abstract class SymbolsTickDatasource implements RemoteDatasource {
+abstract class TicksSymbolDatasource implements RemoteDatasource {
   Stream<SymbolTick> getSymbolTick(String symbol);
 }
 
-class SymbolsTickDatasourceImpl extends SymbolsTickDatasource {
+class TicksSymbolDatasourceImpl extends TicksSymbolDatasource {
   final NetworkService _networkService;
 
-  SymbolsTickDatasourceImpl(this._networkService);
+  TicksSymbolDatasourceImpl(this._networkService);
 
   @override
   void dispose() {

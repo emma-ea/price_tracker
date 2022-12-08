@@ -1,6 +1,6 @@
 import 'package:kiwi/kiwi.dart';
 import 'package:price_tracker/price_tracker/data/datasources/market_symbols_datasource.dart';
-import 'package:price_tracker/price_tracker/data/datasources/ticks_datasource.dart';
+import 'package:price_tracker/price_tracker/data/datasources/ticks_symbol_datasource.dart';
 import 'package:price_tracker/price_tracker/data/repository/repository_impl.dart';
 import 'package:price_tracker/price_tracker/domain/repositories/repository.dart';
 import 'package:price_tracker/core/data/network/network_service.dart';
@@ -21,7 +21,7 @@ abstract class PriceTrackerModuleInjector {
 
   @Register.factory(Repository, from: RepositoryImpl)
   @Register.factory(MarketSymbolsDatasource, from: MarketSymbolsDatasourceImpl)
-  @Register.factory(SymbolsTickDatasource, from: SymbolsTickDatasourceImpl)
+  @Register.factory(TicksSymbolDatasource, from: TicksSymbolDatasourceImpl)
   @Register.singleton(AvailableSymbols)
   @Register.singleton(AvailableTicks)
   @Register.singleton(DisposeConnection)
