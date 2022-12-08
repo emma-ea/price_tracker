@@ -8,6 +8,7 @@ import 'package:price_tracker/price_tracker/domain/usecases/available_symbol_tic
 import 'package:price_tracker/price_tracker/domain/usecases/dispose_connection.dart';
 import 'package:price_tracker/price_tracker/presentation/pages/price_tracker.dart';
 import 'package:price_tracker/price_tracker/presentation/state/price_tracker_cubit.dart';
+import 'package:price_tracker/price_tracker/presentation/widgets/loading_indicator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,10 +30,28 @@ class MyApp extends StatelessWidget {
         PriceTrackerModuleInjector.resolve<AvailableTicks>(),
         PriceTrackerModuleInjector.resolve<DisposeConnection>()
       )..getMarketSymbols(),
-      child: const MaterialApp(
+      child: MaterialApp(
         title: 'Price Tracker',
-        home: PriceTracker(),
+        theme: ThemeData(),
+        home: BlocConsumer<PriceTrackerCubit, PriceTrackerState>(
+          listener: ((context, state) {
+            state.maybeWhen(
+              orElse: (){},
+              symbolsLoaded: ((payload) {
+                Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PriceTracker()));
+              })
+            );
+          }),
+          builder: (context, state) => state.maybeWhen(
+            orElse: () => Container(),
+            error: ((payload) {
+              return Center(child: Text("Something went wrong.\n${payload.error}"),);
+            }),
+            loading: (payload) => const LoadingIndicator(),
+            symbolsLoaded: ((payload) => Container()
+          )
+        ),
       ),
-    );
+    ));
   }
 }

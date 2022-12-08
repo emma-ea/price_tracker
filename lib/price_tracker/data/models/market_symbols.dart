@@ -35,4 +35,6 @@ abstract class ActiveSymbol with _$ActiveSymbol {
   factory ActiveSymbol.fromJson(Map json) => 
     _$ActiveSymbolFromJson(Map.castFrom<dynamic, dynamic, String, dynamic>(json));
 
+  
+
 }

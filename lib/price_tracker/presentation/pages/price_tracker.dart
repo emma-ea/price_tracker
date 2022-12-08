@@ -18,13 +18,21 @@ class PriceTracker extends StatefulWidget {
 
 class _PriceTrackerState extends State<PriceTracker> {
 
-  double price = 0;
+  double? price;
   double oldPrice = 0;
-  List<ActiveSymbol>? symbols;
+  List<ActiveSymbol>? markets;
+  List<String>? filteredMarkets;
+  List<ActiveSymbol>? assets;
   Ticks? ticks;
 
   static const double margin = 20;
   bool loading = false;
+
+  String? selectedMarket = "commodities";
+  String? selectedMarketName;
+  String? selectedAsset;
+
+  Color priceColor = Colors.grey;
 
   Size appBarSize = Size(
     AppBar().preferredSize.width,
@@ -34,6 +42,8 @@ class _PriceTrackerState extends State<PriceTracker> {
   @override
   void initState() {
     super.initState();
+    markets = context.read<PriceTrackerCubit>().state.payload.symbols!.activeSymbols;
+    assets = [];
   }
 
   @override
@@ -42,21 +52,34 @@ class _PriceTrackerState extends State<PriceTracker> {
       listener: (context, state) {
         state.maybeWhen(
           orElse: (){},
-          symbolsLoaded: (payload) {
-            symbols = payload.symbols!.activeSymbols!;
-          },
+          ticksLoading: ((payload) {
+            loading = true;
+          }),
           ticksLoaded: (payload) {
-            ticks = payload.ticks!.tick;
-            logger.i(ticks!.quote);
-            price = ticks!.quote ?? 0;
-            setState(() {
-              loading = false;
-            });
+            loading = false;
+            if (payload.ticks != null) {
+              ticks = payload.ticks!.tick;
+              logger.i(ticks!.quote);
+              price = ticks!.quote;
+              if (price! > oldPrice) {
+                priceColor = Colors.green;
+              } else if (price! < oldPrice) {
+                priceColor = Colors.red;
+              } else {
+                priceColor = Colors.grey;
+              }
+              oldPrice = price!;
+            }
+            
           },
+          error: (payload) {
+            // show error dialog
+          }
         );
       },
-      builder: (context, state) =>
-        WillPopScope(
+      builder: (context, state) {
+        const textStyle = TextStyle(fontSize: 20.0);
+        return WillPopScope(
           onWillPop: () {
             context.read<PriceTrackerCubit>().disposeConnection();
             // Navigator.pop(context);
@@ -66,7 +89,9 @@ class _PriceTrackerState extends State<PriceTracker> {
             child: Scaffold(
               appBar: PreferredSize(
                 preferredSize: appBarSize,
-                child: const Center(child: Text("Price Tracker")),
+                child: const Center(
+                  child: Text("Price Tracker", style: textStyle,)
+                ),
               ),
               body: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -77,11 +102,25 @@ class _PriceTrackerState extends State<PriceTracker> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ListDropDown(
-                        hint: "Select Market",
-                        items: symbols ?? [],
-                        onChanged: (symbol) {
-                          context.read<PriceTrackerCubit>().getSymbolTicks(symbol ?? "");
-                        }
+                        hint: Text(selectedMarketName ?? "Select a Market", style: textStyle),
+                        items: markets!.map<DropdownMenuItem<String>>((ActiveSymbol item) {
+                          return DropdownMenuItem(
+                            value: item.market,
+                            child: Text(item.marketName ?? ""),
+                            onTap: () {
+                              setState(() {
+                                selectedMarketName = item.marketName;
+                              });
+                            },
+                          );
+                        }).toList().toSet(),
+                        onChanged: (market) {
+                          selectedMarket = market;
+                          setState(() {
+                            assets = markets!.toList();
+                            assets!.retainWhere((asset) => selectedMarket == asset.market);
+                          });
+                        }, 
                       ),
                     ],
                   ),
@@ -91,15 +130,22 @@ class _PriceTrackerState extends State<PriceTracker> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ListDropDown(
-                        hint: "Select Asset",
-                        items: symbols ?? [],
-                        onChanged: (symbol) {
-                          context.read<PriceTrackerCubit>().getSymbolTicks(symbol ?? "");
-                          setState(() {
-                            loading = true;
-                          });
-                        }
+                       ListDropDown(
+                        hint: Text(selectedAsset  ?? "Select an Asset", style: textStyle),
+                        items: assets!.map<DropdownMenuItem<String>>((ActiveSymbol item) {
+                          return DropdownMenuItem(
+                            value: item.symbol,
+                            child: Text(item.displayName ?? ""),
+                            onTap: () {
+                              setState(() {
+                                selectedAsset = item.displayName;
+                              });
+                            },
+                          );
+                        }).toList().toSet(),
+                        onChanged: (asset) {
+                          context.read<PriceTrackerCubit>().getSymbolTicks(asset ?? "");
+                        }, 
                       ),
                     ],
                   ),
@@ -107,15 +153,19 @@ class _PriceTrackerState extends State<PriceTracker> {
                   const SizedBox(height: margin,),
         
                   if (loading) ...[
-                    const CircularProgressIndicator(),
+                    const Center(child: CircularProgressIndicator()),
                   ] else ... [
-                    Text("Price: $price"),
+                    Text(
+                      "Price ${price ?? ''}", 
+                      style: TextStyle(fontSize: 20.0, color: priceColor),
+                    ),
                   ]
                 ],
               ),
             ),
           ),
-        )
+        );
+      }
     );
   }
 }
