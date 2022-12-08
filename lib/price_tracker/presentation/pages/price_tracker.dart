@@ -20,17 +20,17 @@ class _PriceTrackerState extends State<PriceTracker> {
 
   double? price;
   double oldPrice = 0;
+
   List<ActiveSymbol>? markets;
   List<String>? filteredMarkets;
   List<ActiveSymbol>? assets;
-  Ticks? ticks;
 
   static const double margin = 20;
   bool loading = false;
 
-  String? selectedMarket = "commodities";
+  String? selectedMarket;
   String? selectedMarketName;
-  String? selectedAsset;
+  String? selectedAssetName;
 
   Color priceColor = Colors.grey;
 
@@ -43,6 +43,7 @@ class _PriceTrackerState extends State<PriceTracker> {
   void initState() {
     super.initState();
     markets = context.read<PriceTrackerCubit>().state.payload.symbols!.activeSymbols;
+    filteredMarkets =  markets!.map((e) => e.market!).toSet().toList();
     assets = [];
   }
 
@@ -56,11 +57,12 @@ class _PriceTrackerState extends State<PriceTracker> {
             loading = true;
           }),
           ticksLoaded: (payload) {
+            filteredMarkets =  markets!.map((e) => e.market!).toSet().toList();
             loading = false;
-            if (payload.ticks != null) {
-              ticks = payload.ticks!.tick;
-              logger.i(ticks!.quote);
-              price = ticks!.quote;
+            price = 0.0;
+            if (payload.ticks!.tick != null) {
+              price = payload.ticks!.tick!.quote;
+              logger.i(price);
               if (price! > oldPrice) {
                 priceColor = Colors.green;
               } else if (price! < oldPrice) {
@@ -70,7 +72,6 @@ class _PriceTrackerState extends State<PriceTracker> {
               }
               oldPrice = price!;
             }
-            
           },
           error: (payload) {
             // show error dialog
@@ -82,7 +83,7 @@ class _PriceTrackerState extends State<PriceTracker> {
         return WillPopScope(
           onWillPop: () {
             context.read<PriceTrackerCubit>().disposeConnection();
-            // Navigator.pop(context);
+            logger.i("exiting");
             return Future.value(true);
           },
           child: SafeArea(
@@ -113,10 +114,11 @@ class _PriceTrackerState extends State<PriceTracker> {
                               });
                             },
                           );
-                        }).toList().toSet(),
+                        }).toList()..retainWhere((market) => filteredMarkets!.remove(market.value)),
                         onChanged: (market) {
                           selectedMarket = market;
                           setState(() {
+                            filteredMarkets =  markets!.map((e) => e.market!).toSet().toList();
                             assets = markets!.toList();
                             assets!.retainWhere((asset) => selectedMarket == asset.market);
                           });
@@ -131,18 +133,18 @@ class _PriceTrackerState extends State<PriceTracker> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                        ListDropDown(
-                        hint: Text(selectedAsset  ?? "Select an Asset", style: textStyle),
+                        hint: Text(selectedAssetName  ?? "Select an Asset", style: textStyle),
                         items: assets!.map<DropdownMenuItem<String>>((ActiveSymbol item) {
                           return DropdownMenuItem(
                             value: item.symbol,
                             child: Text(item.displayName ?? ""),
                             onTap: () {
                               setState(() {
-                                selectedAsset = item.displayName;
+                                selectedAssetName = item.displayName;
                               });
                             },
                           );
-                        }).toList().toSet(),
+                        }).toList(),
                         onChanged: (asset) {
                           oldPrice = 0.0;
                           context.read<PriceTrackerCubit>().getSymbolTicks(asset ?? "");

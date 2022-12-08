@@ -4,7 +4,7 @@ import 'package:price_tracker/price_tracker/data/models/market_symbols.dart';
 class ListDropDown extends StatelessWidget {
 
   final ValueChanged<String?> onChanged;
-  final Set<DropdownMenuItem<String>> items;
+  final List<DropdownMenuItem<String>> items;
   Widget hint;
 
   ListDropDown({
@@ -21,7 +21,7 @@ class ListDropDown extends StatelessWidget {
       child: DropdownButton<String>(
         isExpanded: true,
         hint: hint,
-        items: items.toList(),
+        items: items,
         onChanged: onChanged
       ),
     );
