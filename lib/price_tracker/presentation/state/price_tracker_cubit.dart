@@ -39,7 +39,8 @@ class PriceTrackerCubit extends Cubit<PriceTrackerState> {
     results.fold(
       (l) => emit(PriceTrackerState.error(payload: state.payload.copyWith(error: l.message))), 
       (r) {
-        r!.listen((event) => emit(PriceTrackerState.symbolsLoaded(payload: state.payload.copyWith(symbols: event))));
+        r!.listen((event) => emit(PriceTrackerState.symbolsLoaded(payload: state.payload.copyWith(symbols: event))))
+          .onError(handleError);
       },
     );
   }
@@ -52,7 +53,8 @@ class PriceTrackerCubit extends Cubit<PriceTrackerState> {
     results.fold(
       (l) => emit(PriceTrackerState.error(payload: state.payload.copyWith(error: l.message))), 
       (r) {
-        r!.listen((event) => emit(PriceTrackerState.ticksLoaded(payload: state.payload.copyWith(ticks: event))));
+        r!.listen((event) => emit(PriceTrackerState.ticksLoaded(payload: state.payload.copyWith(ticks: event))))
+          .onError(handleError);
       },
     );
   }
@@ -66,6 +68,10 @@ class PriceTrackerCubit extends Cubit<PriceTrackerState> {
       (l) => emit(PriceTrackerState.error(payload: state.payload.copyWith(error: l.message))), 
       (r) => emit(PriceTrackerState.loaded(payload: state.payload.copyWith(symbols: null, ticks: null)))
     );
+  }
+
+  void handleError(e, s) {  // exception, stacktrace
+    emit(PriceTrackerState.error(payload: state.payload.copyWith(error: e.message)));
   }
   
 }

@@ -6,6 +6,8 @@ import 'package:price_tracker/core/logging_utils.dart';
 import 'package:price_tracker/price_tracker/data/models/market_symbols.dart';
 import 'package:price_tracker/price_tracker/data/models/symbol_ticks.dart';
 import 'package:price_tracker/price_tracker/presentation/state/price_tracker_cubit.dart';
+import 'package:price_tracker/price_tracker/presentation/widgets/exception.dart';
+import 'package:price_tracker/price_tracker/presentation/widgets/info_dialog.dart';
 import 'package:price_tracker/price_tracker/presentation/widgets/list_drop_down.dart';
 import 'package:price_tracker/price_tracker/presentation/widgets/loading_indicator.dart';
 
@@ -43,13 +45,13 @@ class _PriceTrackerState extends State<PriceTracker> {
   void initState() {
     super.initState();
     markets = context.read<PriceTrackerCubit>().state.payload.symbols!.activeSymbols;
-    filteredMarkets =  markets!.map((e) => e.market!).toSet().toList();
+    if (markets != null) filteredMarkets =  markets!.map((e) => e.market!).toSet().toList();
     assets = [];
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<PriceTrackerCubit, PriceTrackerState>(
+    return markets != null ? BlocConsumer<PriceTrackerCubit, PriceTrackerState>(
       listener: (context, state) {
         state.maybeWhen(
           orElse: (){},
@@ -73,8 +75,23 @@ class _PriceTrackerState extends State<PriceTracker> {
               oldPrice = price!;
             }
           },
+          symbolsLoaded: (payload) {
+            final marketsList = payload.symbols?.activeSymbols;
+            if (marketsList != null) {
+              markets = marketsList;
+              filteredMarkets =  markets!.map((e) => e.market!).toSet().toList();
+            }
+          },
           error: (payload) {
-            // show error dialog
+            infoDialog(
+              context, 
+              "Error", 
+              payload.error,
+              () {
+                Navigator.pop(context);
+                return context.read<PriceTrackerCubit>().getMarketSymbols();
+              }
+            );
           }
         );
       },
@@ -104,7 +121,7 @@ class _PriceTrackerState extends State<PriceTracker> {
                     children: [
                       ListDropDown(
                         hint: Text(selectedMarketName ?? "Select a Market", style: textStyle),
-                        items: markets!.map<DropdownMenuItem<String>>((ActiveSymbol item) {
+                        items: markets?.map<DropdownMenuItem<String>>((ActiveSymbol item) {
                           return DropdownMenuItem(
                             value: item.market,
                             child: Text(item.marketName ?? ""),
@@ -114,7 +131,7 @@ class _PriceTrackerState extends State<PriceTracker> {
                               });
                             },
                           );
-                        }).toList()..retainWhere((market) => filteredMarkets!.remove(market.value)),
+                        }).toList()?..retainWhere((market) => filteredMarkets!.remove(market.value)),
                         onChanged: (market) {
                           selectedMarket = market;
                           setState(() {
@@ -169,6 +186,6 @@ class _PriceTrackerState extends State<PriceTracker> {
           ),
         );
       }
-    );
+    ) : const ExceptionScreen();
   }
 }

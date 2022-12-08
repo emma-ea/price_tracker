@@ -8,6 +8,8 @@ import 'package:price_tracker/price_tracker/domain/usecases/available_symbol_tic
 import 'package:price_tracker/price_tracker/domain/usecases/dispose_connection.dart';
 import 'package:price_tracker/price_tracker/presentation/pages/price_tracker.dart';
 import 'package:price_tracker/price_tracker/presentation/state/price_tracker_cubit.dart';
+import 'package:price_tracker/price_tracker/presentation/widgets/exception.dart';
+import 'package:price_tracker/price_tracker/presentation/widgets/info_dialog.dart';
 import 'package:price_tracker/price_tracker/presentation/widgets/loading_indicator.dart';
 
 Future<void> main() async {
@@ -40,14 +42,23 @@ class MyApp extends StatelessWidget {
               symbolsLoaded: ((payload) {
                 Navigator.of(context)
                   .pushReplacement(MaterialPageRoute(builder: (_) => const PriceTracker()));
-              })
+              }),
+              error: (payload) {
+                infoDialog(
+                  context, 
+                  "Error", 
+                  payload.error,
+                  () {
+                    Navigator.pop(context);
+                    context.read<PriceTrackerCubit>().getMarketSymbols();
+                  }
+                );
+              }
             );
           }),
           builder: (context, state) => state.maybeWhen(
             orElse: () => Container(),
-            error: ((payload) {
-              return Center(child: Text("Something went wrong.\n${payload.error}"),);
-            }),
+            error: ((payload) => ExceptionScreen(error: payload.error,)),
             loading: (payload) => const LoadingIndicator(),
             symbolsLoaded: ((payload) => const PriceTracker()
           )
