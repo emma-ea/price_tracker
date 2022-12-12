@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:price_tracker/core/failures.dart';
 import 'package:price_tracker/core/logging_utils.dart';
 import 'package:price_tracker/price_tracker/data/models/market_symbols.dart';
 import 'package:price_tracker/price_tracker/data/models/symbol_ticks.dart';
@@ -85,12 +86,12 @@ class _PriceTrackerState extends State<PriceTracker> {
           error: (payload) {
             loading = false;
             infoDialog(
-              context, 
-              "Error", 
-              payload.error,
-              () {
+              context: context, 
+              title: "Error", 
+              msg: payload.error,
+              retry: () {
                 Navigator.pop(context);
-                return context.read<PriceTrackerCubit>().getMarketSymbols();
+                context.read<PriceTrackerCubit>().getMarketSymbols();
               }
             );
           }
@@ -188,6 +189,6 @@ class _PriceTrackerState extends State<PriceTracker> {
           ),
         );
       }
-    ) : const ExceptionScreen();
+    ) : ExceptionScreen(ApiFailure(ApiErrors.unknown, "Markets Not Found"));
   }
 }
