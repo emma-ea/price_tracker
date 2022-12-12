@@ -10,9 +10,9 @@ class ApiFailure extends Failure {
   ApiFailure(this.errorCode, String message) : super(message);
 }
 
-class NetworkFailure {
-  final String message;
-  NetworkFailure(this.message);
+class NetworkFailure extends Failure {
+  final String msg;
+  NetworkFailure(this.msg) : super(msg);
 }
 
 class UIError {
