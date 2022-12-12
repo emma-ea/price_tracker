@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:price_tracker/core/failures.dart';
 
 class ExceptionScreen extends StatelessWidget {
   final String error;
-  const ExceptionScreen({super.key, this.error = ""});
+  const ExceptionScreen(Failure failure, {super.key, this.error = ""});
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:price_tracker/core/di/configure_injectors.dart';
+import 'package:price_tracker/core/failures.dart';
 import 'package:price_tracker/price_tracker/domain/di/price_tracker_module_injector.dart';
 import 'package:price_tracker/price_tracker/domain/usecases/available_market_symbol.dart';
 import 'package:price_tracker/price_tracker/domain/usecases/available_symbol_ticks.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Price Tracker',
         theme: ThemeData(),
-        home: BlocConsumer<PriceTrackerCubit, PriceTrackerState>(
+        home: BlocListener<PriceTrackerCubit, PriceTrackerState>(
           listener: ((context, state) {
             state.maybeWhen(
               orElse: (){},
@@ -45,24 +46,25 @@ class MyApp extends StatelessWidget {
               }),
               error: (payload) {
                 infoDialog(
-                  context, 
-                  "Error", 
-                  payload.error,
-                  () {
+                  context: context, 
+                  title: "Error", 
+                  msg: payload.error,
+                  cancel: () => Navigator.pop(context),
+                  retry: () {
                     Navigator.pop(context);
                     context.read<PriceTrackerCubit>().getMarketSymbols();
                   }
                 );
-              }
+              },
             );
           }),
-          builder: (context, state) => state.maybeWhen(
-            orElse: () => Container(),
-            error: ((payload) => ExceptionScreen(error: payload.error,)),
-            loading: (payload) => const LoadingIndicator(),
-            symbolsLoaded: ((payload) => const PriceTracker()
-          )
-        ),
+          child: Builder(
+            builder: (ctx) => ctx.watch<PriceTrackerCubit>().state.maybeWhen(
+                error: (payload) => ExceptionScreen(NetworkFailure(""), error: payload.error,),
+                loading: (payload) => const LoadingIndicator(),
+                orElse: () => const LoadingIndicator(),
+              )
+          ),
       ),
     ));
   }
