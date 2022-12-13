@@ -27,7 +27,9 @@ abstract class Ticks with _$Ticks {
     @JsonKey(name: 'bid')
     required double? bid,
     @JsonKey(name: 'quote')
-    required double? quote
+    required double? quote,
+    @JsonKey(name: 'epoch')
+    required int epoch
   }) = _Ticks;
 
   factory Ticks.fromJson(Map json) => 

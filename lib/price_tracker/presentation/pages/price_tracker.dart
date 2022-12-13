@@ -24,6 +24,7 @@ class PriceTracker extends StatefulWidget {
 class _PriceTrackerState extends State<PriceTracker> {
 
   double? price;
+  double? bid, ask;
   double oldPrice = 0;
 
   List<ActiveSymbol>? markets;
@@ -68,9 +69,20 @@ class _PriceTrackerState extends State<PriceTracker> {
             loading = false;
             price = 0.0;
             if (payload.ticks!.tick != null) {
-              price = payload.ticks!.tick!.quote;
+
+              final tk = payload.ticks!.tick;
+              price = tk!.quote;
+              bid = tk.bid;
+              ask = tk.ask;
+              // TODO: chart not rendering line as expected
+              // thinking an issue with the date
+              // to read api docs
+              final date = DateTime.fromMicrosecondsSinceEpoch(tk.epoch);
+              // currently using datetime.now to get what i want
+              // must change later once epoch from api is understood
               priceData.add(PriceData(date: DateTime.now(), quoteOT: price!));
               logger.i(price);
+
               if (price! > oldPrice) {
                 priceColor = Colors.green;
               } else if (price! < oldPrice) {
@@ -175,6 +187,7 @@ class _PriceTrackerState extends State<PriceTracker> {
                         onChanged: (asset) {
                           oldPrice = 0.0;
                           priceData = [];
+                          logger.i(asset);
                           context.read<PriceTrackerCubit>().getSymbolTicks(asset ?? "");
                         }, 
                       ),
@@ -186,10 +199,28 @@ class _PriceTrackerState extends State<PriceTracker> {
                   if (loading) ...[
                     const Center(child: CircularProgressIndicator()),
                   ] else ... [
-                    Text(
-                      "Price ${price ?? ''}", 
-                      style: TextStyle(fontSize: 20.0, color: priceColor),
-                    ),
+                    // price != null 
+                    // ? Text(
+                    //   "Ask ${ask ?? ''} -- Bid ${bid ?? ''} -- Price ${price ?? ''}", 
+                    //   style: TextStyle(fontSize: 20.0, color: priceColor),
+                    // )
+                    // : const SizedBox.shrink(),
+
+                    price != null 
+                    ? RichText(
+                      text: TextSpan(
+                        style: const TextStyle(color: Colors.blueAccent),
+                        children: [
+                          TextSpan(text: 'Ask ${ask ?? ''} -- '),
+                          TextSpan(text: 'Bid ${bid ?? ''} -- '),
+                          TextSpan(
+                            text: 'Price ${price ?? ''}', 
+                            style: TextStyle(color: priceColor)
+                          ),
+                        ]
+                      ),
+                    )
+                    : const SizedBox.shrink(),
 
                     const SizedBox(height: margin,),
                     // chart

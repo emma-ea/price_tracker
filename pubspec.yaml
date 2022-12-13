@@ -43,6 +43,7 @@ dependencies:
   kiwi: ^4.0.3
   freezed_annotation: ^2.2.0
   syncfusion_flutter_charts: ^20.3.61
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
