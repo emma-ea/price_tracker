@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:price_tracker/charts/data/model/ts_price_ticker.dart';
+import 'package:price_tracker/charts/presentation/widgets/ts_price_chart.dart';
 import 'package:price_tracker/core/failures.dart';
 import 'package:price_tracker/core/logging_utils.dart';
 import 'package:price_tracker/price_tracker/data/models/market_symbols.dart';
@@ -42,6 +44,8 @@ class _PriceTrackerState extends State<PriceTracker> {
     AppBar().preferredSize.height
   );
 
+  List<PriceData> priceData = [];
+
   @override
   void initState() {
     super.initState();
@@ -65,6 +69,7 @@ class _PriceTrackerState extends State<PriceTracker> {
             price = 0.0;
             if (payload.ticks!.tick != null) {
               price = payload.ticks!.tick!.quote;
+              priceData.add(PriceData(date: DateTime.now(), quoteOT: price!));
               logger.i(price);
               if (price! > oldPrice) {
                 priceColor = Colors.green;
@@ -115,8 +120,10 @@ class _PriceTrackerState extends State<PriceTracker> {
               ),
               body: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+
+                  const SizedBox(height: margin * 2,),
         
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -167,6 +174,7 @@ class _PriceTrackerState extends State<PriceTracker> {
                         }).toList(),
                         onChanged: (asset) {
                           oldPrice = 0.0;
+                          priceData = [];
                           context.read<PriceTrackerCubit>().getSymbolTicks(asset ?? "");
                         }, 
                       ),
@@ -182,6 +190,18 @@ class _PriceTrackerState extends State<PriceTracker> {
                       "Price ${price ?? ''}", 
                       style: TextStyle(fontSize: 20.0, color: priceColor),
                     ),
+
+                    const SizedBox(height: margin,),
+                    // chart
+                    priceData.isNotEmpty 
+                    ? Expanded(
+                      child: SizedBox(
+                        height: 200,
+                        child: PriceChart(priceData: priceData, title: selectedAssetName),
+                      ),
+                    ) 
+                    : const SizedBox.shrink(),
+
                   ]
                 ],
               ),
