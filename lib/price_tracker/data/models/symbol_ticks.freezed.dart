@@ -210,6 +210,8 @@ mixin _$Ticks {
   double? get bid => throw _privateConstructorUsedError;
   @JsonKey(name: 'quote')
   double? get quote => throw _privateConstructorUsedError;
+  @JsonKey(name: 'epoch')
+  int get epoch => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -224,7 +226,8 @@ abstract class $TicksCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'ask') double? ask,
       @JsonKey(name: 'bid') double? bid,
-      @JsonKey(name: 'quote') double? quote});
+      @JsonKey(name: 'quote') double? quote,
+      @JsonKey(name: 'epoch') int epoch});
 }
 
 /// @nodoc
@@ -243,6 +246,7 @@ class _$TicksCopyWithImpl<$Res, $Val extends Ticks>
     Object? ask = freezed,
     Object? bid = freezed,
     Object? quote = freezed,
+    Object? epoch = null,
   }) {
     return _then(_value.copyWith(
       ask: freezed == ask
@@ -257,6 +261,10 @@ class _$TicksCopyWithImpl<$Res, $Val extends Ticks>
           ? _value.quote
           : quote // ignore: cast_nullable_to_non_nullable
               as double?,
+      epoch: null == epoch
+          ? _value.epoch
+          : epoch // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -270,7 +278,8 @@ abstract class _$$_TicksCopyWith<$Res> implements $TicksCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'ask') double? ask,
       @JsonKey(name: 'bid') double? bid,
-      @JsonKey(name: 'quote') double? quote});
+      @JsonKey(name: 'quote') double? quote,
+      @JsonKey(name: 'epoch') int epoch});
 }
 
 /// @nodoc
@@ -285,6 +294,7 @@ class __$$_TicksCopyWithImpl<$Res> extends _$TicksCopyWithImpl<$Res, _$_Ticks>
     Object? ask = freezed,
     Object? bid = freezed,
     Object? quote = freezed,
+    Object? epoch = null,
   }) {
     return _then(_$_Ticks(
       ask: freezed == ask
@@ -299,6 +309,10 @@ class __$$_TicksCopyWithImpl<$Res> extends _$TicksCopyWithImpl<$Res, _$_Ticks>
           ? _value.quote
           : quote // ignore: cast_nullable_to_non_nullable
               as double?,
+      epoch: null == epoch
+          ? _value.epoch
+          : epoch // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -309,7 +323,8 @@ class _$_Ticks implements _Ticks {
   const _$_Ticks(
       {@JsonKey(name: 'ask') required this.ask,
       @JsonKey(name: 'bid') required this.bid,
-      @JsonKey(name: 'quote') required this.quote});
+      @JsonKey(name: 'quote') required this.quote,
+      @JsonKey(name: 'epoch') required this.epoch});
 
   factory _$_Ticks.fromJson(Map<String, dynamic> json) =>
       _$$_TicksFromJson(json);
@@ -323,10 +338,13 @@ class _$_Ticks implements _Ticks {
   @override
   @JsonKey(name: 'quote')
   final double? quote;
+  @override
+  @JsonKey(name: 'epoch')
+  final int epoch;
 
   @override
   String toString() {
-    return 'Ticks(ask: $ask, bid: $bid, quote: $quote)';
+    return 'Ticks(ask: $ask, bid: $bid, quote: $quote, epoch: $epoch)';
   }
 
   @override
@@ -336,12 +354,13 @@ class _$_Ticks implements _Ticks {
             other is _$_Ticks &&
             (identical(other.ask, ask) || other.ask == ask) &&
             (identical(other.bid, bid) || other.bid == bid) &&
-            (identical(other.quote, quote) || other.quote == quote));
+            (identical(other.quote, quote) || other.quote == quote) &&
+            (identical(other.epoch, epoch) || other.epoch == epoch));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, ask, bid, quote);
+  int get hashCode => Object.hash(runtimeType, ask, bid, quote, epoch);
 
   @JsonKey(ignore: true)
   @override
@@ -361,7 +380,8 @@ abstract class _Ticks implements Ticks {
   const factory _Ticks(
       {@JsonKey(name: 'ask') required final double? ask,
       @JsonKey(name: 'bid') required final double? bid,
-      @JsonKey(name: 'quote') required final double? quote}) = _$_Ticks;
+      @JsonKey(name: 'quote') required final double? quote,
+      @JsonKey(name: 'epoch') required final int epoch}) = _$_Ticks;
 
   factory _Ticks.fromJson(Map<String, dynamic> json) = _$_Ticks.fromJson;
 
@@ -374,6 +394,9 @@ abstract class _Ticks implements Ticks {
   @override
   @JsonKey(name: 'quote')
   double? get quote;
+  @override
+  @JsonKey(name: 'epoch')
+  int get epoch;
   @override
   @JsonKey(ignore: true)
   _$$_TicksCopyWith<_$_Ticks> get copyWith =>
