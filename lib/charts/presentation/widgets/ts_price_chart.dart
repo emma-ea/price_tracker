@@ -31,19 +31,22 @@ class _PriceChartState extends State<PriceChart> {
 
   List<ChartSeries<PriceData, DateTime>> _buildSeriesData(List<PriceData> data) {
     return <ChartSeries<PriceData, DateTime>> [ 
-      HiloOpenCloseSeries<PriceData, DateTime>(
-        dataSource: data, 
-        xValueMapper: (PriceData price, _) => price.date, 
-        closeValueMapper: (PriceData price, _) => price.quoteOT,
-        openValueMapper: (PriceData price, _) => price.quoteOT,
-        highValueMapper: (PriceData price, _) => price.quoteOT,
-        lowValueMapper: (PriceData price, _) => price.quoteOT,
-      ),
-      // LineSeries<PriceData, DateTime>(
+      // HiloOpenCloseSeries<PriceData, DateTime>(
       //   dataSource: data, 
-      //   xValueMapper: (PriceData datum, _) => datum.date, 
-      //   yValueMapper: (PriceData datum, _) => datum.quoteOT,
+      //   spacing: 0,
+      //   bearColor: Colors.red,
+      //   bullColor: Colors.blue,
+      //   xValueMapper: (PriceData price, _) => price.date, 
+      //   closeValueMapper: (PriceData price, _) => price.quoteOT,
+      //   openValueMapper: (PriceData price, _) => price.quoteOT,
+      //   highValueMapper: (PriceData price, _) => price.quoteOT,
+      //   lowValueMapper: (PriceData price, _) => price.quoteOT,
       // ),
+      LineSeries<PriceData, DateTime>(
+        dataSource: data, 
+        xValueMapper: (PriceData datum, _) => datum.date, 
+        yValueMapper: (PriceData datum, _) => datum.quoteOT,
+      ),
     ];
   }
 }

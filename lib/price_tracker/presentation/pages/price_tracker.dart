@@ -74,13 +74,8 @@ class _PriceTrackerState extends State<PriceTracker> {
               price = tk!.quote;
               bid = tk.bid;
               ask = tk.ask;
-              // TODO: chart not rendering line as expected
-              // thinking an issue with the date
-              // to read api docs
-              final date = DateTime.fromMicrosecondsSinceEpoch(tk.epoch);
-              // currently using datetime.now to get what i want
-              // must change later once epoch from api is understood
-              priceData.add(PriceData(date: DateTime.now(), quoteOT: price!));
+              final date = DateTime.fromMillisecondsSinceEpoch(tk.epoch);
+              priceData.add(PriceData(date: date, quoteOT: price!));
               logger.i(price);
 
               if (price! > oldPrice) {
@@ -199,13 +194,6 @@ class _PriceTrackerState extends State<PriceTracker> {
                   if (loading) ...[
                     const Center(child: CircularProgressIndicator()),
                   ] else ... [
-                    // price != null 
-                    // ? Text(
-                    //   "Ask ${ask ?? ''} -- Bid ${bid ?? ''} -- Price ${price ?? ''}", 
-                    //   style: TextStyle(fontSize: 20.0, color: priceColor),
-                    // )
-                    // : const SizedBox.shrink(),
-
                     price != null 
                     ? RichText(
                       text: TextSpan(
