@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       )..getMarketSymbols(),
       child: MaterialApp(
         title: 'Price Tracker',
-        theme: ThemeData(),
+        theme: ThemeData.light(),
         home: BlocListener<PriceTrackerCubit, PriceTrackerState>(
           listener: ((context, state) {
             state.maybeWhen(
