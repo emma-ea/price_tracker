@@ -24,6 +24,7 @@ class _PriceChartState extends State<PriceChart> {
           title: ChartTitle(text: widget.title ?? ""),
           primaryXAxis: DateTimeAxis(dateFormat: DateFormat.MMMEd()),
           series: _buildSeriesData(widget.priceData ?? []),
+          crosshairBehavior: CrosshairBehavior(enable: true),
         ),
       ],
     );

@@ -68,6 +68,7 @@ class _PriceTrackerState extends State<PriceTracker> {
             filteredMarkets =  markets!.map((e) => e.market!).toSet().toList();
             loading = false;
             price = 0.0;
+            logger.i(priceData);
             if (payload.ticks!.tick != null) {
 
               final tk = payload.ticks!.tick;
@@ -122,7 +123,7 @@ class _PriceTrackerState extends State<PriceTracker> {
               appBar: PreferredSize(
                 preferredSize: appBarSize,
                 child: const Center(
-                  child: Text("Price Tracker", style: textStyle,)
+                  child: Text("Price Tracker 💱", style: textStyle,)
                 ),
               ),
               body: Column(
@@ -216,7 +217,7 @@ class _PriceTrackerState extends State<PriceTracker> {
                     ? Expanded(
                       child: SizedBox(
                         height: 200,
-                        child: PriceChart(priceData: priceData, title: selectedAssetName),
+                        child: PriceChart(priceData: priceData, title: "$selectedAssetName 💱"),
                       ),
                     ) 
                     : const SizedBox.shrink(),
