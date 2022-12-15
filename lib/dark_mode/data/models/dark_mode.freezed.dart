@@ -21,7 +21,7 @@ DarkMode _$DarkModeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DarkMode {
   String? get title => throw _privateConstructorUsedError;
-  ThemeData get theme => throw _privateConstructorUsedError;
+  Brightness? get brightness => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $DarkModeCopyWith<$Res> {
   factory $DarkModeCopyWith(DarkMode value, $Res Function(DarkMode) then) =
       _$DarkModeCopyWithImpl<$Res, DarkMode>;
   @useResult
-  $Res call({String? title, ThemeData theme});
+  $Res call({String? title, Brightness? brightness});
 }
 
 /// @nodoc
@@ -51,17 +51,17 @@ class _$DarkModeCopyWithImpl<$Res, $Val extends DarkMode>
   @override
   $Res call({
     Object? title = freezed,
-    Object? theme = null,
+    Object? brightness = freezed,
   }) {
     return _then(_value.copyWith(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      theme: null == theme
-          ? _value.theme
-          : theme // ignore: cast_nullable_to_non_nullable
-              as ThemeData,
+      brightness: freezed == brightness
+          ? _value.brightness
+          : brightness // ignore: cast_nullable_to_non_nullable
+              as Brightness?,
     ) as $Val);
   }
 }
@@ -73,7 +73,7 @@ abstract class _$$_DarkModeCopyWith<$Res> implements $DarkModeCopyWith<$Res> {
       __$$_DarkModeCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? title, ThemeData theme});
+  $Res call({String? title, Brightness? brightness});
 }
 
 /// @nodoc
@@ -88,17 +88,17 @@ class __$$_DarkModeCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = freezed,
-    Object? theme = null,
+    Object? brightness = freezed,
   }) {
     return _then(_$_DarkMode(
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      theme: null == theme
-          ? _value.theme
-          : theme // ignore: cast_nullable_to_non_nullable
-              as ThemeData,
+      brightness: freezed == brightness
+          ? _value.brightness
+          : brightness // ignore: cast_nullable_to_non_nullable
+              as Brightness?,
     ));
   }
 }
@@ -106,7 +106,7 @@ class __$$_DarkModeCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_DarkMode implements _DarkMode {
-  const _$_DarkMode({required this.title, required this.theme});
+  const _$_DarkMode({required this.title, required this.brightness});
 
   factory _$_DarkMode.fromJson(Map<String, dynamic> json) =>
       _$$_DarkModeFromJson(json);
@@ -114,11 +114,11 @@ class _$_DarkMode implements _DarkMode {
   @override
   final String? title;
   @override
-  final ThemeData theme;
+  final Brightness? brightness;
 
   @override
   String toString() {
-    return 'DarkMode(title: $title, theme: $theme)';
+    return 'DarkMode(title: $title, brightness: $brightness)';
   }
 
   @override
@@ -127,12 +127,13 @@ class _$_DarkMode implements _DarkMode {
         (other.runtimeType == runtimeType &&
             other is _$_DarkMode &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.theme, theme) || other.theme == theme));
+            (identical(other.brightness, brightness) ||
+                other.brightness == brightness));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, theme);
+  int get hashCode => Object.hash(runtimeType, title, brightness);
 
   @JsonKey(ignore: true)
   @override
@@ -151,14 +152,14 @@ class _$_DarkMode implements _DarkMode {
 abstract class _DarkMode implements DarkMode {
   const factory _DarkMode(
       {required final String? title,
-      required final ThemeData theme}) = _$_DarkMode;
+      required final Brightness? brightness}) = _$_DarkMode;
 
   factory _DarkMode.fromJson(Map<String, dynamic> json) = _$_DarkMode.fromJson;
 
   @override
   String? get title;
   @override
-  ThemeData get theme;
+  Brightness? get brightness;
   @override
   @JsonKey(ignore: true)
   _$$_DarkModeCopyWith<_$_DarkMode> get copyWith =>
