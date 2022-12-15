@@ -68,7 +68,6 @@ class _PriceTrackerState extends State<PriceTracker> {
             filteredMarkets =  markets!.map((e) => e.market!).toSet().toList();
             loading = false;
             price = 0.0;
-            logger.i(priceData);
             if (payload.ticks!.tick != null) {
 
               final tk = payload.ticks!.tick;
