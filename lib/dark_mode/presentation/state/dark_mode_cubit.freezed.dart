@@ -14,6 +14,19 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+DarkModeState _$DarkModeStateFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'light':
+      return _LightDarkModeState.fromJson(json);
+    case 'dark':
+      return _DarkDarkModeState.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'DarkModeState',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
 /// @nodoc
 mixin _$DarkModeState {
   DarkModeStatePayload get payload => throw _privateConstructorUsedError;
@@ -55,7 +68,7 @@ mixin _$DarkModeState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $DarkModeStateCopyWith<DarkModeState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -141,12 +154,19 @@ class __$$_LightDarkModeStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_LightDarkModeState implements _LightDarkModeState {
-  const _$_LightDarkModeState({required this.payload});
+  const _$_LightDarkModeState({required this.payload, final String? $type})
+      : $type = $type ?? 'light';
+
+  factory _$_LightDarkModeState.fromJson(Map<String, dynamic> json) =>
+      _$$_LightDarkModeStateFromJson(json);
 
   @override
   final DarkModeStatePayload payload;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -161,6 +181,7 @@ class _$_LightDarkModeState implements _LightDarkModeState {
             (identical(other.payload, payload) || other.payload == payload));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, payload);
 
@@ -232,11 +253,21 @@ class _$_LightDarkModeState implements _LightDarkModeState {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LightDarkModeStateToJson(
+      this,
+    );
+  }
 }
 
 abstract class _LightDarkModeState implements DarkModeState {
   const factory _LightDarkModeState(
       {required final DarkModeStatePayload payload}) = _$_LightDarkModeState;
+
+  factory _LightDarkModeState.fromJson(Map<String, dynamic> json) =
+      _$_LightDarkModeState.fromJson;
 
   @override
   DarkModeStatePayload get payload;
@@ -283,12 +314,19 @@ class __$$_DarkDarkModeStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_DarkDarkModeState implements _DarkDarkModeState {
-  const _$_DarkDarkModeState({required this.payload});
+  const _$_DarkDarkModeState({required this.payload, final String? $type})
+      : $type = $type ?? 'dark';
+
+  factory _$_DarkDarkModeState.fromJson(Map<String, dynamic> json) =>
+      _$$_DarkDarkModeStateFromJson(json);
 
   @override
   final DarkModeStatePayload payload;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
@@ -303,6 +341,7 @@ class _$_DarkDarkModeState implements _DarkDarkModeState {
             (identical(other.payload, payload) || other.payload == payload));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, payload);
 
@@ -374,11 +413,21 @@ class _$_DarkDarkModeState implements _DarkDarkModeState {
     }
     return orElse();
   }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DarkDarkModeStateToJson(
+      this,
+    );
+  }
 }
 
 abstract class _DarkDarkModeState implements DarkModeState {
   const factory _DarkDarkModeState(
       {required final DarkModeStatePayload payload}) = _$_DarkDarkModeState;
+
+  factory _DarkDarkModeState.fromJson(Map<String, dynamic> json) =
+      _$_DarkDarkModeState.fromJson;
 
   @override
   DarkModeStatePayload get payload;
@@ -388,10 +437,15 @@ abstract class _DarkDarkModeState implements DarkModeState {
       throw _privateConstructorUsedError;
 }
 
+DarkModeStatePayload _$DarkModeStatePayloadFromJson(Map<String, dynamic> json) {
+  return _DarkModeStatePayload.fromJson(json);
+}
+
 /// @nodoc
 mixin _$DarkModeStatePayload {
   DarkMode? get darkMode => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $DarkModeStatePayloadCopyWith<DarkModeStatePayload> get copyWith =>
       throw _privateConstructorUsedError;
@@ -482,9 +536,12 @@ class __$$_DarkModeStatePayloadCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_DarkModeStatePayload implements _DarkModeStatePayload {
   const _$_DarkModeStatePayload({required this.darkMode});
+
+  factory _$_DarkModeStatePayload.fromJson(Map<String, dynamic> json) =>
+      _$$_DarkModeStatePayloadFromJson(json);
 
   @override
   final DarkMode? darkMode;
@@ -503,6 +560,7 @@ class _$_DarkModeStatePayload implements _DarkModeStatePayload {
                 other.darkMode == darkMode));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, darkMode);
 
@@ -512,11 +570,21 @@ class _$_DarkModeStatePayload implements _DarkModeStatePayload {
   _$$_DarkModeStatePayloadCopyWith<_$_DarkModeStatePayload> get copyWith =>
       __$$_DarkModeStatePayloadCopyWithImpl<_$_DarkModeStatePayload>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_DarkModeStatePayloadToJson(
+      this,
+    );
+  }
 }
 
 abstract class _DarkModeStatePayload implements DarkModeStatePayload {
   const factory _DarkModeStatePayload({required final DarkMode? darkMode}) =
       _$_DarkModeStatePayload;
+
+  factory _DarkModeStatePayload.fromJson(Map<String, dynamic> json) =
+      _$_DarkModeStatePayload.fromJson;
 
   @override
   DarkMode? get darkMode;

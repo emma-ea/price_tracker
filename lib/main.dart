@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:price_tracker/core/di/configure_injectors.dart';
 import 'package:price_tracker/core/di/constants.dart';
 import 'package:price_tracker/core/failures.dart';
@@ -17,6 +19,11 @@ import 'package:price_tracker/price_tracker/presentation/widgets/loading_indicat
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: await getApplicationDocumentsDirectory(),
+  );
+  
   configureInjectors();
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
