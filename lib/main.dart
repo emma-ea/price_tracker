@@ -6,7 +6,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:price_tracker/core/di/configure_injectors.dart';
 import 'package:price_tracker/core/di/constants.dart';
 import 'package:price_tracker/core/failures.dart';
-import 'package:price_tracker/core/logging_utils.dart';
 import 'package:price_tracker/dark_mode/presentation/state/dark_mode_cubit.dart';
 import 'package:price_tracker/price_tracker/domain/di/price_tracker_module_injector.dart';
 import 'package:price_tracker/price_tracker/domain/usecases/available_market_symbol.dart';
@@ -53,7 +52,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    logger.i(HydratedBloc.storage);
     return BlocBuilder<DarkModeCubit, DarkModeState>(
       builder: (context, state) => MaterialApp(
         title: TITLE,
