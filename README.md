@@ -10,7 +10,8 @@ To run app, you'll require an app id from deriv. This is similar to having an ap
 
 Visit Deriv. create an account and follow the steps to get an app id.
 
-The app id is reference from a `.env` following this pattern.
+The app id is reference from a `.env` following this pattern by creating a file in the root of the project
+with the following info:
 
 fileName: 
 
