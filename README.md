@@ -13,6 +13,9 @@ Visit Deriv. create an account and follow the steps to get an app id.
 The app id is reference from a `.env` following this pattern.
 
 fileName: 
+
 > 'app-env.env'
+
 content: 
+
 > app-id=YOUR-APP-ID-HERE
