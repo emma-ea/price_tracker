@@ -2,15 +2,17 @@
 
 price tracker
 
+market price tracker using deriv websockets api
+
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run app, you'll require an app id from deriv. This is similar to having an api key.
 
-A few resources to get you started if this is your first Flutter project:
+Visit Deriv. create an account and follow the steps to get an app id.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The app id is reference from a `.env` following this pattern.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+fileName: 
+> 'app-env.env'
+content: 
+> app-id=YOUR-APP-ID-HERE
