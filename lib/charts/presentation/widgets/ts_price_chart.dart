@@ -22,7 +22,17 @@ class _PriceChartState extends State<PriceChart> {
       children: [
         SfCartesianChart(
           title: ChartTitle(text: widget.title ?? ""),
-          primaryXAxis: DateTimeAxis(dateFormat: DateFormat.MMMEd()),
+          primaryXAxis: DateTimeAxis(
+            isVisible: false,
+            interval: 1,
+            borderWidth: 0,
+            borderColor: Colors.transparent,
+          ),
+          primaryYAxis: NumericAxis(
+            isVisible: true,
+            borderWidth: 0,
+            borderColor: Colors.transparent,           
+          ),
           series: _buildSeriesData(widget.priceData ?? []),
           crosshairBehavior: CrosshairBehavior(enable: true),
         ),

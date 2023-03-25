@@ -129,9 +129,6 @@ class _PriceTrackerState extends State<PriceTracker> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-
-                  const SizedBox(height: margin * 2,),
-        
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -181,7 +178,7 @@ class _PriceTrackerState extends State<PriceTracker> {
                         }).toList(),
                         onChanged: (asset) {
                           oldPrice = 0.0;
-                          priceData = [];
+                          priceData.clear();
                           logger.i(asset);
                           context.read<PriceTrackerCubit>().getSymbolTicks(asset ?? "");
                         }, 
@@ -215,7 +212,6 @@ class _PriceTrackerState extends State<PriceTracker> {
                     priceData.isNotEmpty 
                     ? Expanded(
                       child: SizedBox(
-                        height: 200,
                         child: PriceChart(priceData: priceData, title: "$selectedAssetName 💱"),
                       ),
                     ) 
