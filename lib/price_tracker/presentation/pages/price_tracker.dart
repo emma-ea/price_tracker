@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:price_tracker/charts/data/model/ts_price_ticker.dart';
 import 'package:price_tracker/charts/presentation/widgets/ts_price_chart.dart';
+import 'package:price_tracker/core/di/constants.dart';
 import 'package:price_tracker/core/failures.dart';
 import 'package:price_tracker/core/logging_utils.dart';
+import 'package:price_tracker/dark_mode/presentation/state/dark_mode_cubit.dart';
 import 'package:price_tracker/price_tracker/data/models/market_symbols.dart';
 import 'package:price_tracker/price_tracker/data/models/symbol_ticks.dart';
 import 'package:price_tracker/price_tracker/presentation/state/price_tracker_cubit.dart';
@@ -111,6 +113,7 @@ class _PriceTrackerState extends State<PriceTracker> {
       },
       builder: (context, state) {
         const textStyle = TextStyle(fontSize: 20.0);
+        String? title = BlocProvider.of<DarkModeCubit>(context).state.payload.darkMode?.title;
         return WillPopScope(
           onWillPop: () {
             context.read<PriceTrackerCubit>().disposeConnection();
@@ -121,8 +124,13 @@ class _PriceTrackerState extends State<PriceTracker> {
             child: Scaffold(
               appBar: PreferredSize(
                 preferredSize: appBarSize,
-                child: const Center(
-                  child: Text("Price Tracker 💱", style: textStyle,)
+                child: BlocBuilder<DarkModeCubit, DarkModeState>(
+                  builder: (context, state) {
+                    title = state.payload.darkMode?.title;
+                    return Center(
+                      child: Text(" Price Tracker 💱 $title", style: textStyle,)
+                    );
+                  }
                 ),
               ),
               body: Column(
@@ -219,6 +227,18 @@ class _PriceTrackerState extends State<PriceTracker> {
 
                   ]
                 ],
+              ),
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  // i should probably have a bool value passed
+                  // to the cubit to change the theme state
+                  if (title == TITLE_LIGHT) {
+                    BlocProvider.of<DarkModeCubit>(context).darkMode();
+                    return;
+                  }
+                  BlocProvider.of<DarkModeCubit>(context).lightMode();
+                },
+                child: const Icon(Icons.lightbulb),
               ),
             ),
           ),

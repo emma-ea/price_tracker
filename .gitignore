@@ -45,3 +45,6 @@ app.*.map.json
 
 # Creds: 
 lib/core/data/network/creds.dart
+
+# Env:
+*.env

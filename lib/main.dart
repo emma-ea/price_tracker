@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:price_tracker/core/data/network/config.dart';
 import 'package:price_tracker/core/di/configure_injectors.dart';
+import 'package:price_tracker/core/di/constants.dart';
 import 'package:price_tracker/core/failures.dart';
+import 'package:price_tracker/dark_mode/presentation/state/dark_mode_cubit.dart';
 import 'package:price_tracker/price_tracker/domain/di/price_tracker_module_injector.dart';
 import 'package:price_tracker/price_tracker/domain/usecases/available_market_symbol.dart';
 import 'package:price_tracker/price_tracker/domain/usecases/available_symbol_ticks.dart';
@@ -15,11 +21,34 @@ import 'package:price_tracker/price_tracker/presentation/widgets/loading_indicat
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: kEnvFile);
+  
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: await getApplicationDocumentsDirectory(),
+  );
+  
   configureInjectors();
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  runApp(const MyApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => DarkModeCubit()
+        ),
+        BlocProvider( 
+          create: (context) => PriceTrackerCubit(
+            PriceTrackerModuleInjector.resolve<AvailableSymbols>(),
+            PriceTrackerModuleInjector.resolve<AvailableTicks>(),
+            PriceTrackerModuleInjector.resolve<DisposeConnection>()
+          )..getMarketSymbols(),
+        ),
+      ], 
+      child: const MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -27,15 +56,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PriceTrackerCubit(
-        PriceTrackerModuleInjector.resolve<AvailableSymbols>(),
-        PriceTrackerModuleInjector.resolve<AvailableTicks>(),
-        PriceTrackerModuleInjector.resolve<DisposeConnection>()
-      )..getMarketSymbols(),
-      child: MaterialApp(
-        title: 'Price Tracker',
-        theme: ThemeData(),
+    return BlocBuilder<DarkModeCubit, DarkModeState>(
+      builder: (context, state) => MaterialApp(
+        title: TITLE,
+        theme: ThemeData( 
+          brightness: state.payload.darkMode?.brightness, //  BlocProvider.of<DarkModeCubit>(context).state.payload.darkMode?.brightness
+        ),
         home: BlocListener<PriceTrackerCubit, PriceTrackerState>(
           listener: ((context, state) {
             state.maybeWhen(
@@ -66,6 +92,7 @@ class MyApp extends StatelessWidget {
               )
           ),
       ),
-    ));
+      ),
+    );
   }
 }
