@@ -24,10 +24,12 @@ _$_Ticks _$$_TicksFromJson(Map<String, dynamic> json) => _$_Ticks(
       ask: (json['ask'] as num?)?.toDouble(),
       bid: (json['bid'] as num?)?.toDouble(),
       quote: (json['quote'] as num?)?.toDouble(),
+      epoch: json['epoch'] as int,
     );
 
 Map<String, dynamic> _$$_TicksToJson(_$_Ticks instance) => <String, dynamic>{
       'ask': instance.ask,
       'bid': instance.bid,
       'quote': instance.quote,
+      'epoch': instance.epoch,
     };

@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:price_tracker/charts/data/model/ts_price_ticker.dart';
+import 'package:price_tracker/charts/presentation/widgets/ts_price_chart.dart';
 import 'package:price_tracker/core/di/constants.dart';
 import 'package:price_tracker/core/failures.dart';
 import 'package:price_tracker/core/logging_utils.dart';
@@ -24,6 +26,7 @@ class PriceTracker extends StatefulWidget {
 class _PriceTrackerState extends State<PriceTracker> {
 
   double? price;
+  double? bid, ask;
   double oldPrice = 0;
 
   List<ActiveSymbol>? markets;
@@ -43,6 +46,8 @@ class _PriceTrackerState extends State<PriceTracker> {
     AppBar().preferredSize.width,
     AppBar().preferredSize.height
   );
+
+  List<PriceData> priceData = [];
 
   @override
   void initState() {
@@ -66,8 +71,15 @@ class _PriceTrackerState extends State<PriceTracker> {
             loading = false;
             price = 0.0;
             if (payload.ticks!.tick != null) {
-              price = payload.ticks!.tick!.quote;
+
+              final tk = payload.ticks!.tick;
+              price = tk!.quote;
+              bid = tk.bid;
+              ask = tk.ask;
+              final date = DateTime.fromMillisecondsSinceEpoch(tk.epoch);
+              priceData.add(PriceData(date: date, quoteOT: price!));
               logger.i(price);
+
               if (price! > oldPrice) {
                 priceColor = Colors.green;
               } else if (price! < oldPrice) {
@@ -116,16 +128,15 @@ class _PriceTrackerState extends State<PriceTracker> {
                   builder: (context, state) {
                     title = state.payload.darkMode?.title;
                     return Center(
-                      child: Text("$title", style: textStyle,)
+                      child: Text(" Price Tracker 💱 $title", style: textStyle,)
                     );
                   }
                 ),
               ),
               body: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-        
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -175,6 +186,8 @@ class _PriceTrackerState extends State<PriceTracker> {
                         }).toList(),
                         onChanged: (asset) {
                           oldPrice = 0.0;
+                          priceData.clear();
+                          logger.i(asset);
                           context.read<PriceTrackerCubit>().getSymbolTicks(asset ?? "");
                         }, 
                       ),
@@ -186,10 +199,32 @@ class _PriceTrackerState extends State<PriceTracker> {
                   if (loading) ...[
                     const Center(child: CircularProgressIndicator()),
                   ] else ... [
-                    Text(
-                      "Price ${price ?? ''}", 
-                      style: TextStyle(fontSize: 20.0, color: priceColor),
-                    ),
+                    price != null 
+                    ? RichText(
+                      text: TextSpan(
+                        style: const TextStyle(color: Colors.blueAccent),
+                        children: [
+                          TextSpan(text: 'Ask ${ask ?? ''} -- '),
+                          TextSpan(text: 'Bid ${bid ?? ''} -- '),
+                          TextSpan(
+                            text: 'Price ${price ?? ''}', 
+                            style: TextStyle(color: priceColor)
+                          ),
+                        ]
+                      ),
+                    )
+                    : const SizedBox.shrink(),
+
+                    const SizedBox(height: margin,),
+                    // chart
+                    priceData.isNotEmpty 
+                    ? Expanded(
+                      child: SizedBox(
+                        child: PriceChart(priceData: priceData, title: "$selectedAssetName 💱"),
+                      ),
+                    ) 
+                    : const SizedBox.shrink(),
+
                   ]
                 ],
               ),
